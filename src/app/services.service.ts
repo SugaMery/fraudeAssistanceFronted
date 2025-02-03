@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -373,4 +373,37 @@ export class ServicesService {
   deleteReport(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/reports/${id}`, { headers: this.getHeaders() });
   }
+
+  // Roles
+  createRole(role: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/roles`, role, { headers: this.getHeaders() });
+  }
+
+  getRoles(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/roles`);
+  }
+
+  getRole(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/roles/${id}`);
+  }
+
+  updateRole(id: number, role: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/roles/${id}`, role, { headers: this.getHeaders() });
+  }
+
+  deleteRole(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/roles/${id}`, { headers: this.getHeaders() });
+  }
+
+  // User Registration
+  registerUser(user: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/register`, user);
+  }
+
+  // User Login
+  loginUser(credentials: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, credentials);
+  }
 }
+
+export default ServicesService;

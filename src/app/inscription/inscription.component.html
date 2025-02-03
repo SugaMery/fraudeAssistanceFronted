@@ -6,8 +6,6 @@
 </div>
 <!-- /.stricky-header -->
 
-
-
 <!--Page Header Start-->
 <section class="page-header">
     <div class="page-header__bg" style="background-image: url(assets/images/shapes/page-header-bg-shape.png);">
@@ -55,74 +53,110 @@
 <!--Page Header End-->
 
 <!--Start Inscription One-->
-<section class="inscription-one">
+<section class="login-one">
     <div class="container">
-        <div class="inscription-one__form">
+        <div class="login-one__form">
             <div class="inner-title text-center">
                 <h2>Inscrivez-vous ici</h2>
             </div>
-            <form id="inscription-one__form" name="Inscription-one_form" action="#" method="post">
+            <form id="login-one__form" (ngSubmit)="register()"  name="Login-one_form"  #inscriptionForm="ngForm">
                 <div class="row">
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_username" id="formUsername" placeholder="Nom d'utilisateur..." required="" value="">
+                                <label for="formFirstName" style="margin-bottom: 1rem;">Prénom</label>
+                                <input type="text" name="form_first_name" id="formFirstName" placeholder="Prénom..." [(ngModel)]="firstName" (input)="validateForm()">
+                                <div *ngIf="errors['firstName']" class="error">{{ errors['firstName'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="email" name="form_email" id="formEmail" placeholder="Email..." required="" value="">
+                                <label for="formLastName" style="margin-bottom: 1rem;">Nom de famille</label>
+                                <input type="text" name="form_last_name" id="formLastName" placeholder="Nom de famille..." [(ngModel)]="lastName" (input)="validateForm()">
+                                <div *ngIf="errors['lastName']" class="error">{{ errors['lastName'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="password" name="form_password" id="formPassword" placeholder="Mot de passe..." required="" value="">
+                                <label for="formUsername" style="margin-bottom: 1rem;">Nom d'utilisateur</label>
+                                <input type="text" name="form_username" id="formUsername" placeholder="Nom d'utilisateur..." [(ngModel)]="username" (input)="validateForm()" autocomplete="username">
+                                <div *ngIf="errors['username']" class="error">{{ errors['username'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_first_name" id="formFirstName" placeholder="Prénom..." required="" value="">
+                                <label for="formEmail" style="margin-bottom: 1rem;">Email</label>
+                                <input type="email" name="form_email" id="formEmail" placeholder="Email..." [(ngModel)]="email" (input)="validateForm()" autocomplete="email">
+                                <div *ngIf="errors['email']" class="error">{{ errors['email'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_last_name" id="formLastName" placeholder="Nom de famille..." required="" value="">
+                                <label for="formPassword" style="margin-bottom: 1rem;">Mot de passe</label>
+                                <input type="password" name="form_password" id="formPassword" placeholder="Mot de passe..." [(ngModel)]="password" (input)="onPasswordChange($event)" autocomplete="new-password">
+                                <span class="toggle-password" (click)="togglePasswordVisibility('formPassword')">
+                                    <span *ngIf="isPasswordVisible('formPassword')">👁️</span>
+                                    <span *ngIf="!isPasswordVisible('formPassword')">👁️</span>
+                                </span>
+                                <div *ngIf="errors['password']" class="error">{{ errors['password'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_phone_number" id="formPhoneNumber" placeholder="Numéro de téléphone..." required="" value="">
+                                <label for="formConfirmPassword" style="margin-bottom: 1rem;">Confirmer le mot de passe</label>
+                                <input type="password" name="form_confirm_password" id="formConfirmPassword" placeholder="Confirmer le mot de passe..." [(ngModel)]="confirmPassword" (input)="onConfirmPasswordChange($event)" autocomplete="new-password">
+                                <span class="toggle-password1" (click)="togglePasswordVisibility('formConfirmPassword')">
+                                    <span *ngIf="isPasswordVisible('formConfirmPassword')">👁️</span>
+                                    <span *ngIf="!isPasswordVisible('formConfirmPassword')">👁️</span>
+                                </span>
+                                <div *ngIf="errors['confirmPassword']" class="error">{{ errors['confirmPassword'] }}</div>
+                                <div *ngIf="errors['passwordMismatch']" class="error">{{ errors['passwordMismatch'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_address" id="formAddress" placeholder="Adresse..." required="" value="">
+                                <label for="formPhoneNumber" style="margin-bottom: 1rem;">Numéro de téléphone</label>
+                                <input type="text" name="form_phone_number" id="formPhoneNumber" placeholder="Numéro de téléphone..." [(ngModel)]="phoneNumber" (input)="validateForm()">
+                                <div *ngIf="errors['phoneNumber']" class="error">{{ errors['phoneNumber'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_postal_code" id="formPostalCode" placeholder="Code postal..." required="" value="">
+                                <label for="formAddress" style="margin-bottom: 1rem;">Adresse</label>
+                                <input type="text" name="form_address" id="formAddress" placeholder="Adresse..." [(ngModel)]="address" (input)="validateForm()">
+                                <div *ngIf="errors['address']" class="error">{{ errors['address'] }}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-12">
+                    <div class="col-xl-6">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_city" id="formCity" placeholder="Ville..." required="" value="">
+                                <label for="formPostalCode" style="margin-bottom: 1rem;">Code postal</label>
+                                <input type="text" name="form_postal_code" id="formPostalCode" placeholder="Code postal..." [(ngModel)]="selectedCodePostal" (change)="onCodePostalChange($event)">
+                                <div *ngIf="errors['codePostal']" class="error">{{ errors['codePostal'] }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="form-group">
+                            <div class="input-box">
+                                <label for="formCity" style="margin-bottom: 1rem;">Ville</label>
+                                <input type="text" name="form_city" id="formCity" placeholder="Ville..." [(ngModel)]="selectedVille" (change)="onVilleChange($event)">
+                                <div *ngIf="errors['ville']" class="error">{{ errors['ville'] }}</div>
                             </div>
                         </div>
                     </div>
