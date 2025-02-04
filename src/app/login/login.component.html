@@ -61,19 +61,25 @@
             <div class="inner-title text-center">
                 <h2>Connectez-vous ici</h2>
             </div>
-            <form id="login-one__form" name="Login-one_form" action="#" method="post">
+            <form id="login-one__form" name="Login-one_form" (ngSubmit)="login(formEmail, formPassword)">
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="email" name="form_email" id="formEmail" placeholder="Email..." required="" value="">
+                                <label for="formEmail" style="margin-bottom: 1rem;">Email</label>
+                                <input type="email" name="form_email" id="formEmail" placeholder="Email..." required="" [(ngModel)]="formEmail">
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-12">
                         <div class="form-group">
                             <div class="input-box">
-                                <input type="text" name="form_password" id="formPassword" placeholder="Mot de passe..." required="" value="">
+                                <label for="formPassword" style="margin-bottom: 1rem;">Mot de passe</label>
+                                <input [type]="formPasswordVisible ? 'text' : 'password'" name="form_password" id="formPassword" placeholder="Mot de passe..." [(ngModel)]="formPassword" (input)="onPasswordChange($event)" autocomplete="new-password">
+                                <span class="toggle-password" (click)="togglePasswordVisibility()">
+                                    <span *ngIf="formPasswordVisible">👁️</span>
+                                    <span *ngIf="!formPasswordVisible">👁️</span>
+                                </span>                            
                             </div>
                         </div>
                     </div>

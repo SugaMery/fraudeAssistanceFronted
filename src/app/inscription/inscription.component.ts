@@ -124,7 +124,7 @@ export class InscriptionComponent {
         password: this.password,
         first_name: this.firstName,
         last_name: this.lastName,
-        role_id: 1,
+        role_id: 3,
         city: this.selectedVille,
         postal_code: this.selectedCodePostal,
         address: this.address,
@@ -134,6 +134,18 @@ export class InscriptionComponent {
         response => {
           console.log('User registered successfully', response);
           // Handle successful registration (e.g., navigate to login page)
+          this.username = '';
+          this.email = '';
+          this.password = '';
+          this.firstName = '';
+          this.lastName = '';
+          this.selectedVille = '';
+          this.selectedCodePostal = '';
+          this.address = '';
+          this.phoneNumber = '';
+          
+          window.location.href = '/connexion';
+          
         },
         error => {
           console.error('Error registering user', error);

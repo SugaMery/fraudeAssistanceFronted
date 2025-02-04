@@ -8,7 +8,7 @@
                             <i class="icon-email"></i>
                         </div>
                         <div class="text">
-                            <p><a href="mailto:support@example.com">supportexample.com</a></p>
+                            <p><a href="mailto:support@example.com">support&#64;fraudeassistance.com</a></p>
                         </div>
                     </li>
                     <li>
@@ -16,7 +16,7 @@
                             <i class="icon-contact"></i>
                         </div>
                         <div class="text">
-                            <p><a href="tel:1212345678900">+12 (123) 456 78900</a></p>
+                            <p><a href="tel:1212345678900">+33 66666666</a></p>
                         </div>
                     </li>
                 </ul>
@@ -26,7 +26,10 @@
                             <i class="icon-location"></i>
                         </div>
                         <div class="text">
-                            <p>684 West College St. Sun City, USA</p>
+                            <p>25 rue de Ponthieu 75008 Paris
+
+
+                            </p>
                         </div>
                     </li>
                 </ul>
@@ -48,91 +51,14 @@
                                 <span class="icon-down-arrow"></span>
                             </div>
                             <ul class="list-unstyled main-menu__category-sub-menu">
-                                <li>
+                                <li *ngFor="let category of categories">
                                     <a href="#">
                                         <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-1.png" alt="">
+                                            <img [src]="category.icon" alt="">
                                         </div>
                                         <div class="main-menu__category-content">
-                                            <h5>Tech & <br> Programmation</h5>
-                                            <p>3+ Cours</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-2.png" alt="">
-                                        </div>
-                                        <div class="main-menu__category-content">
-                                            <h5>Art <br> Créatif</h5>
-                                            <p>3+ Cours</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-3.png" alt="">
-                                        </div>
-                                        <div class="main-menu__category-content">
-                                            <h5>Affaires & <br> Finance</h5>
-                                            <p>3+ Cours</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-4.png" alt="">
-                                        </div>
-                                        <div class="main-menu__category-content">
-                                            <h5>Santé & <br> Bien-être</h5>
-                                            <p>3+ Cours</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-5.png" alt="">
-                                        </div>
-                                        <div class="main-menu__category-content">
-                                            <h5>Écriture & <br> Communication</h5>
-                                            <p>3+ Cours</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-6.png" alt="">
-                                        </div>
-                                        <div class="main-menu__category-content">
-                                            <h5>Recherche Utilisateur & <br> Analyse</h5>
-                                            <p>3+ Cours</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-7.png" alt="">
-                                        </div>
-                                        <div class="main-menu__category-content">
-                                            <h5>Marketing <br> Digital</h5>
-                                            <p>3+ Cours</p>
-                                        </div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="main-menu__category-icon">
-                                            <img src="assets/images/icon/categoyr-two-icon-8.png" alt="">
-                                        </div>
-                                        <div class="main-menu__category-content">
-                                            <h5>Style de Vie & <br> Productivité</h5>
-                                            <p>3+ Cours</p>
+                                            <h5>{{ category.name }}</h5>
+                                   
                                         </div>
                                     </a>
                                 </li>
@@ -287,8 +213,8 @@
                                     <li><a href="cart.html">Panier</a></li>
                                     <li><a href="checkout.html">Paiement</a></li>
                                     <li><a href="wishlist.html">Liste de souhaits</a></li>
-                                    <li><a href="sign-up.html">S'inscrire</a></li>
-                                    <li><a href="login.html">Connexion</a></li>
+                                    <li><a href="inscription">S'inscrire</a></li>
+                                    <li><a href="connexion">Connexion</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -316,10 +242,10 @@
                         </div>
                         <div class="main-menu__btn-boxes">
                             <div class="main-menu__btn-box-1">
-                                <a href="#" class="thm-btn">Connexion</a>
+                                <a href="connexion" class="thm-btn">Connexion</a>
                             </div>
                             <div class="main-menu__btn-box-2">
-                                <a href="#" class="thm-btn">S'inscrire</a>
+                                <a href="inscription" class="thm-btn">S'inscrire</a>
                             </div>
                         </div>
                     </div>

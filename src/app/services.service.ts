@@ -227,6 +227,8 @@ export class ServicesService {
     return this.http.delete(`${this.apiUrl}/login_history/${id}`, { headers: this.getHeaders() });
   }
 
+
+
   // Notifications
   createNotification(notification: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/notifications`, notification, { headers: this.getHeaders() });
@@ -403,6 +405,15 @@ export class ServicesService {
   // User Login
   loginUser(credentials: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials);
+  }
+
+  loginUsers(credentials: { email: string, password: string , ip_address : string}): Observable<any> {
+    return this.http.post(`${this.apiUrl}/login`, credentials);
+  }
+
+  // Get User Information
+  getUser(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user`, { headers: this.getHeaders() });
   }
 }
 
