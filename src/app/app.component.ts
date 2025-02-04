@@ -8,13 +8,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent  {
   title = 'FraudeAssistance';
 
-  ngOnInit() {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'assets/css/responsive.css';
-    document.head.appendChild(link);
-  }
+
+
 }

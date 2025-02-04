@@ -28,7 +28,12 @@
               "src/custom-theme.scss",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "src/assets/js/gsap/gsap.js",
+              "src/assets/js/gsap/ScrollTrigger.js",
+              "src/assets/js/gsap/SplitText.js"
+
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
@@ -92,7 +97,11 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/gsap/gsap.js",
+              "src/assets/js/gsap/ScrollTrigger.js",
+              "src/assets/js/gsap/SplitText.js"
+            ]
           }
         }
       }

@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
   providers: [ServicesService]
-
 })
 export class HeaderComponent implements OnInit {
   categories: any[] = [];
@@ -20,6 +19,8 @@ export class HeaderComponent implements OnInit {
   
   ngOnInit() {
     this.fetchCategories();
+  console.log('HeaderComponent  ', this.categories);
+  
   }
 
   fetchCategories() {
@@ -32,5 +33,19 @@ export class HeaderComponent implements OnInit {
     }, error => {
       console.error('Failed to fetch categories', error);
     });
+  }
+
+  openMobileNav() {
+    const mobileNavWrapper = document.querySelector('.mobile-nav__wrapper');
+    if (mobileNavWrapper) {
+      mobileNavWrapper.classList.add('expanded');
+    }
+  }
+
+  closeMobileNav() {
+    const mobileNavWrapper = document.querySelector('.mobile-nav__wrapper');
+    if (mobileNavWrapper) {
+      mobileNavWrapper.classList.remove('expanded');
+    }
   }
 }
