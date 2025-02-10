@@ -161,3 +161,31 @@
   height: 100%;
   object-fit: cover;
 }
+
+
+::ng-deep .p-dropdown {
+
+  box-shadow: none;
+  border-color: var(--fistudy-bdr-color) !important;
+}
+
+::ng-deep .p-dropdown:not(.p-disabled):hover {
+  border-color: var(--fistudy-bdr-color) !important;
+}
+::ng-deep  .p-dropdown:not(.p-disabled):focus {
+  border-color: var(--fistudy-bdr-color) !important;
+  background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
+}
+
+::ng-deep  .p-dropdown:not(.p-disabled):visited {
+  background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
+}
+
+::ng-deep .p-dropdown:not(.p-disabled).p-focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0rem var(--fistudy-bdr-color) !important;
+  border-color: var(--fistudy-bdr-color) !important;
+  background-color: light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) !important;
+
+}
