@@ -145,7 +145,7 @@
                             </div>
 
                         </div> -->
-                        <div class="main-menu__btn-boxes" *ngIf="isUserLoggedIn()">
+                        <div class="main-menu__btn-boxes" *ngIf="!isUserLoggedIn()">
                             <div class="main-menu__btn-box-1">
                                 <a href="connexion" class="thm-btn">Connexion</a>
                             </div>
@@ -154,7 +154,7 @@
                             </div>
                         </div>
 
-                        <div class="main-menu__btn-boxes" *ngIf="!isUserLoggedIn()">
+                        <div class="main-menu__btn-boxes" *ngIf="isUserLoggedIn()">
 
                             <div class="main-menu__btn-box-1">
                                 <div class="dropdown">

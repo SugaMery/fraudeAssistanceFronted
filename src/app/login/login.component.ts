@@ -21,6 +21,7 @@ export class LoginComponent {
   formEmail: string = '';
   formPassword: string = '';
   formPasswordVisible: boolean = false;
+  errorMessage: string = '';
 
   constructor(private servicesService: ServicesService, private router: Router, private http: HttpClient) {}
 
@@ -35,10 +36,17 @@ console.log('IP Address', ip_address);
           window.location.href = '/';
         } else {
           console.error('Login failed', response.message);
+          if (response.message === 'Invalid credentials') {
+            this.errorMessage = 'Email ou mot de passe incorrect';
+          }
         }
       }, error => {
         console.error('Login failed', error);
-        // Handle login error
+        if (error.status === 401) {
+          this.errorMessage = 'Email ou mot de passe incorrect';
+        } else {
+          this.errorMessage = 'Une erreur est survenue. Veuillez réessayer plus tard.';
+        }
       });
     });
   }

@@ -29,10 +29,10 @@
                         <img src="assets/images/shapes/page-header-shape-1.png" alt="">
                     </div>
                     <div class="page-header__shape-2">
-                        <img src="assets/images/shapes/page-header-shape-2.png" alt="">
+                        <img src="assets/images/shapes/la-securite-sur-internet.png" alt="">
                     </div>
                     <div class="page-header__shape-3">
-                        <img src="assets/images/shapes/page-header-shape-3.png" alt="">
+                        <img src="assets/images/shapes/la-cyber-securite.png" alt="">
                     </div>
                 </div>
                 <h2>Signaler une Fraude</h2>
@@ -55,7 +55,7 @@
                 <div class="section-title-two text-center sec-title-animation animation-style1">
                     <div class="section-title-two__tagline-box">
                         <div class="section-title-two__tagline-shape">
-                            <img src="assets/images/shapes/section-title-two-shape-1.png" alt="">
+                            <img src="assets/images/shapes/alerte.png" alt="">
                         </div>
                         <span class="section-title-two__tagline">Signaler</span>
                     </div>
@@ -102,39 +102,38 @@
                             <div class="section-title-two text-left sec-title-animation animation-style1">
                                 <div class="section-title-two__tagline-box">
                                     <div class="section-title-two__tagline-shape">
-                                        <img src="assets/images/shapes/section-title-two-shape-1.png" alt="">
+                                        <img src="assets/images/shapes/alerte.png" alt="">
                                     </div>
                                     <span class="section-title-two__tagline">Aidez-nous à lutter contre la fraude</span>
                                 </div>
                                 <h2 class="section-title-two__title title-animation">Signaler une fraude
                                 </h2>
                             </div>
-                            <form class="contact-form-validated contact-three__form"
-                                action="assets/inc/sendemail.php" method="post" novalidate="novalidate">
+                            <form class="contact-form-validated contact-three__form" (ngSubmit)="onSubmit()" novalidate="novalidate">
                                 <div class="row">
                                     <div class="col-xl-12 col-lg-12">
                                         <h4 class="contact-three__input-title">Titre</h4>
                                         <div class="contact-three__input-box">
-                                            <input type="text" name="name" placeholder="Votre Nom" required="">
+                                            <input type="text" name="title" placeholder="Titre" required="" [(ngModel)]="report.title">
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <h4 class="contact-three__input-title">Description</h4>
                                         <div class="contact-three__input-box text-message-box">
-                                            <textarea name="message" placeholder="Décrivez la fraude"></textarea>
+                                            <textarea name="description" placeholder="Décrivez la fraude" [(ngModel)]="report.description"></textarea>
                                         </div>
 
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
                                         <h4 class="contact-three__input-title">Catégorie de fraude</h4>
                                         <div class="contact-three__input-box">
-                                            <p-dropdown [options]="categories" placeholder="Sélectionnez une catégorie"></p-dropdown>
+                                            <p-dropdown name="category" [options]="categories" placeholder="Sélectionnez une catégorie" [(ngModel)]="selectedCategory"></p-dropdown>
                                         </div>
                                     </div>
                                     <div class="col-xl-6 col-lg-6">
                                         <h4 class="contact-three__input-title">Ville concernée</h4>
                                         <div class="contact-three__input-box">
-                                            <p-dropdown [options]="cities" placeholder="Sélectionnez une ville"></p-dropdown>
+                                            <p-dropdown name="city" [options]="cities" placeholder="Sélectionnez une ville" [(ngModel)]="selectedCity"></p-dropdown>
                                         </div>
                                     </div>
                                     <div class="container" style="padding: 1rem">
@@ -149,7 +148,7 @@
                                                     </div>
                                                     <div class="text-center pt-3 px-5">
                                                         <p class="w-80 h5 text-dark fw-bold">
-                                                            Ajoutez des preuves (images, documents). Maximum 3 fichiers.
+                                                            Ajoutez des preuves (images). Maximum de 4 images.
                                                         </p>
                                                         <div class="hr-sect">ou</div>
                                                         <button class="btn btn-primary mb-2" (click)="fileInput.click()" style="
@@ -175,7 +174,8 @@
                                                 <div class="row">
                                                     <div class="col-md-3 mb-3" *ngFor="let image of uploadedImages; let i = index">
                                                         <div class="position-relative">
-                                                            <img [src]="image" alt="Image téléchargée" class="img-fluid" style="border-top-left-radius: 10px; border-top-right-radius: 10px;" />
+                                                            <img [src]="image" alt="Image téléchargée" class="img-fluid" style="width: 100%;     height: 350px !important;
+    object-fit: cover !important; " />
                                                             <div class="image-overlay">
                                                                 <button class="btn btn-danger btn-sm position-absolute top-0 end-0 m-2" (click)="deleteImage(i)">
                                                                     <i class="fas fa-trash"></i>
@@ -190,7 +190,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="contact-three__btn-box">
+                                    <div class="contact-three__btn-box" style="text-align: end;">
                                         <button type="submit"
                                             class="thm-btn-two contact-three__btn"><span>Signaler</span><i class="icon-angles-right"></i></button>
                                     </div>

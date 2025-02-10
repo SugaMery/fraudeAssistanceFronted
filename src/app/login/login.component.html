@@ -79,7 +79,13 @@
                                 <span class="toggle-password" (click)="togglePasswordVisibility()">
                                     <span *ngIf="formPasswordVisible">👁️</span>
                                     <span *ngIf="!formPasswordVisible">👁️</span>
-                                </span>                            
+                                </span>
+                                <div *ngIf="errorMessage" class="error-message" style="    color: red;
+                                margin-top: 1rem;
+                                FONT-SIZE: medium;
+                                FONT-FAMILY: CURSIVE;">
+                                    {{ errorMessage }}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -99,10 +105,6 @@
                         <div class="forget">
                             <a href="#">Mot de passe oublié ?</a>
                         </div>
-                    </div>
-
-                    <div class="create-account text-center">
-                        <p>Pas encore inscrit ? <a href="sign-up.html">Créer un compte</a></p>
                     </div>
                 </div>
             </form>

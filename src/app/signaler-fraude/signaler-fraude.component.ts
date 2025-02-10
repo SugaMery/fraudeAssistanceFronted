@@ -6,6 +6,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ServicesService } from '../services.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signaler-fraude',
@@ -23,10 +24,22 @@ export class SignalerFraudeComponent implements OnInit {
   fileError: string | null = null;
   uploadedImages: string[] = [];
   maxImages: boolean = false;
+  report = {
+    user_id: '',
+    title: '',
+    description: '',
+    category_id: '',
+    city_id: '',
+  };
+  files: File[] = [];
 
-  constructor(private servicesService: ServicesService) {}
+  constructor(private servicesService: ServicesService, private router: Router) {}
 
   ngOnInit() {
+    const userId = "5";
+    if (userId) {
+      this.report.user_id = userId;
+    }
     this.servicesService.getCategories().subscribe(data => {
       this.categories = data.data.map((category: any) => ({
         label: category.name,
@@ -62,8 +75,8 @@ export class SignalerFraudeComponent implements OnInit {
 
   onFileSelected(event: any): void {
     const files = event.target.files;
-    if (files.length + this.uploadedImages.length > 3) {
-      this.fileError = 'Vous ne pouvez télécharger que jusqu\'à 3 images.';
+    if (files.length + this.uploadedImages.length > 4) {
+      this.fileError = 'Vous ne pouvez télécharger que jusqu\'à 4 images.';
       this.maxImages = true;
     } else {
       this.fileError = null;
@@ -76,6 +89,7 @@ export class SignalerFraudeComponent implements OnInit {
         reader.readAsDataURL(files[i]);
       }
     }
+    this.files = event.target.files;
   }
 
   deleteImage(index: number): void {
@@ -96,5 +110,19 @@ export class SignalerFraudeComponent implements OnInit {
       reader.readAsDataURL(file);
     };
     fileInput.click();
+  }
+
+  onSubmit() {
+    this.report.category_id = this.selectedCategory ? this.selectedCategory : '';
+    this.report.city_id = this.selectedCity ? this.selectedCity : '';
+    console.log('Report data:', this.report, 'Files:', this.files);
+
+    const filesArray = Array.from(this.files);
+    this.servicesService.createReport(this.report, filesArray).subscribe(response => {
+      console.log('Report created successfully', response);
+      this.router.navigate(['/success-page']); // Navigate to a success page or handle success response
+    }, error => {
+      console.error('Error creating report', error);
+    });
   }
 }

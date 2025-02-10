@@ -92,8 +92,8 @@ export class HeaderComponent implements OnInit, AfterViewInit {
   }
 
   isUserLoggedIn(): boolean {
-    // Implement your logic to check if the user is logged in
-    return false; // Placeholder implementation
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 
   getUserFullName(): string {

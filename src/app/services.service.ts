@@ -356,8 +356,24 @@ export class ServicesService {
   }
 
   // Reports
-  createReport(report: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/reports`, report, { headers: this.getHeaders() });
+
+  createReport(report: any, files: File[]): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('user_id', report.user_id);
+    formData.append('title', report.title);
+    formData.append('description', report.description);
+    formData.append('category_id', report.category_id);
+    formData.append('city_id', report.city_id);
+
+    files.forEach((file) => {
+      formData.append('files', file, file.name);
+    });
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    });
+
+    return this.http.post(`${this.apiUrl}/reports`, formData, { headers });
   }
 
   getReports(): Observable<any> {
@@ -414,6 +430,11 @@ export class ServicesService {
   // Get User Information
   getUser(): Observable<any> {
     return this.http.get(`${this.apiUrl}/user`, { headers: this.getHeaders() });
+  }
+
+  // Get User Information from Token
+  getUserInfo(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/user-info`, { headers: this.getHeaders() });
   }
 }
 
