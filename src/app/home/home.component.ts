@@ -7,10 +7,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SkeletonModule } from 'primeng/skeleton';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FooterComponent, HeaderComponent, SkeletonModule, PreloaderComponent , FormsModule, HttpClientModule, CommonModule],
+  imports: [FooterComponent,RouterModule, HeaderComponent, SkeletonModule, PreloaderComponent , FormsModule, HttpClientModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   providers: [ServicesService]
@@ -18,32 +19,35 @@ import { SkeletonModule } from 'primeng/skeleton';
 export class HomeComponent implements OnInit {
   categories: any[] = []; // Add a property to hold the categories
   reports: any[] = []; // Add a property to hold the reports
+  token: string | null;
 
   private scripts: string[] = [
-    'assets/js/jquery-3.6.0.min.js',
-    'assets/js/bootstrap.bundle.min.js',
-    'assets/js/jarallax.min.js',
-    'assets/js/jquery.ajaxchimp.min.js',
-    'assets/js/jquery.appear.min.js',
-    'assets/js/swiper.min.js',
-    'assets/js/jquery.magnific-popup.min.js',
-    'assets/js/jquery.validate.min.js',
-    'assets/js/odometer.min.js',
-    'assets/js/wNumb.min.js',
-    'assets/js/wow.js',
-    'assets/js/isotope.js',
-    'assets/js/owl.carousel.min.js',
-    'assets/js/jquery-ui.js',
-    'assets/js/jquery.nice-select.min.js',
-    'assets/js/marquee.min.js',
-    'assets/js/aos.js',
-    'assets/js/gsap/gsap.js',
-    'assets/js/gsap/ScrollTrigger.js',
-    'assets/js/script.js'
+    '/assets/js/jquery-3.6.0.min.js',
+    '/assets/js/bootstrap.bundle.min.js',
+    '/assets/js/jarallax.min.js',
+    '/assets/js/jquery.ajaxchimp.min.js',
+    '/assets/js/jquery.appear.min.js',
+    '/assets/js/swiper.min.js',
+    '/assets/js/jquery.magnific-popup.min.js',
+    '/assets/js/jquery.validate.min.js',
+    '/assets/js/odometer.min.js',
+    '/assets/js/wNumb.min.js',
+    '/assets/js/wow.js',
+    '/assets/js/isotope.js',
+    '/assets/js/owl.carousel.min.js',
+    '/assets/js/jquery-ui.js',
+    '/assets/js/jquery.nice-select.min.js',
+    '/assets/js/marquee.min.js',
+    '/assets/js/aos.js',
+    '/assets/js/gsap/gsap.js',
+    '/assets/js/gsap/ScrollTrigger.js',
+    '/assets/js/script.js'
   ];
   private scriptElements: HTMLScriptElement[] = [];
 
-  constructor(private renderer: Renderer2, private servicesService: ServicesService) {} // Inject the service
+  constructor(private renderer: Renderer2, private servicesService: ServicesService) { // Inject the service
+    this.token = localStorage.getItem('token'); // or any other logic to get the token
+  }
 
   ngOnInit() {
     this.loadScripts();

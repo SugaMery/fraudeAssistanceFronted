@@ -1,0 +1,33 @@
+/* ...existing code... */
+.comment-form__ratting li.selected .icon-star {
+    color: gold;
+}
+/* ...existing code... */
+.sidebar__post-image img {
+    width: 100%;
+    border: 1px solid var(--fistudy-base);
+    border-radius: 50%;
+    height: 5.5rem;
+}
+
+.comment-one__image {
+    position: relative;
+    display: block;
+    max-width: 48px;
+    width: 100%;
+    text-align: center;
+    color: #3f51b5;
+}
+
+.comment-one__image-box {
+    position: relative;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border: 1px solid var(--fistudy-base);
+    border-radius: 50%;
+    background: #f5f7ff;
+}

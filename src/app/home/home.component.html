@@ -1051,17 +1051,18 @@
     <!--Counter Two End -->
 
     <!--Courses Three Start -->
-    <section class="courses-three ">
+    <section class="courses-three">
         <div class="container">
             <div class="section-title-two text-center sec-title-animation animation-style1">
                 <div class="section-title-two__tagline-box">
                     <div class="section-title-two__tagline-shape">
-                        <img src="assets/images/shapes/section-title-two-shape-1.png" alt="">
+                        <img src="assets/images/shapes/alerte.png" alt="">
+
                     </div>
-                    <span class="section-title-two__tagline">Best Selling</span>
+                    <span class="section-title-two__tagline">Signalements Récents</span>
                 </div>
-                <h2 class="section-title-two__title title-animation">Our Courses Designed for <br>Your Success
-                    <span>History</span>
+                <h2 class="section-title-two__title title-animation">Découvrez les Derniers <br>Signalements de
+                    <span>Fraude</span>
                 </h2>
             </div>
             
@@ -1085,19 +1086,16 @@
                             <h3 class="courses-three__title"><a href="#">{{ report.description | slice:0:100 }}{{ report.description.length > 100 ? '...' : '' }}</a></h3>
                             <div class="courses-three__btn-and-heart-box">
                                 <div class="courses-three__btn-box">
-                                    <a href="#" class="thm-btn-two">
-                                        <span>View Details</span>
+                                    <a href="/signalement?id={{ report.id }}&titre={{ report.title }}" class="thm-btn-two">
+                                        <span>Voir Détails</span>
                                         <i class="icon-angles-right"></i>
                                     </a>
                                 </div>
-                       
                             </div>
                             <ul class="courses-three__meta list-unstyled">
                                 <li>
                                     <div class="icon">
-                                        <img [src]="report.category_image_path" alt="{{ report.category_name }}" style="    width: 3rem;
-                                        height: 100%;
-                                        object-fit: cover;" class="category-image">
+                                        <img [src]="report.category_image_path" alt="{{ report.category_name }}" style="width: 3rem; height: 100%; object-fit: cover;" class="category-image">
                                     </div>
                                     <p>{{ report.category_name }}</p>
                                 </li>
@@ -1441,14 +1439,14 @@
 
 
     <!--Testimonial Two Start -->
-    <section class="testimonial-two">
+<!--     <section class="testimonial-two">
         <div class="testimonial-two__shape-6">
             <img src="assets/images/shapes/testimonial-two-shape-6.png" alt="">
         </div>
         <div class="testimonial-two__shape-1">
             <img src="assets/images/shapes/testimonial-two-shape-1.png" alt="">
             <div class="testimonial-two__shape-icon-1">
-                <img src="assets/images/icon/testimonial-two-shape-icon-1.png" alt="" class="zoom-fade">
+                <img src="assets/images/icon/intimite.png" alt="" class="zoom-fade">
             </div>
             <div class="testimonial-two__shape-img-2">
                 <img src="assets/images/testimonial/testimonial-two-shape-img-2.jpg" alt="">
@@ -1460,7 +1458,7 @@
         <div class="testimonial-two__shape-2">
             <img src="assets/images/shapes/testimonial-two-shape-2.png" alt="">
             <div class="testimonial-two__shape-icon-2 float-bob-y">
-                <img src="assets/images/icon/testimonial-two-shape-icon-2.png" alt="">
+                <img src="assets/images/icon/les-mesures.png" alt="">
             </div>
             <div class="testimonial-two__shape-img-1 zoom-fade">
                 <img src="assets/images/testimonial/testimonial-two-shape-img-1.jpg" alt="">
@@ -1477,7 +1475,6 @@
                     <span class="icon-quote"></span>
                 </div>
                 <div class="testimonial-two__slider">
-
                     <div class="testimonial-two__main-content">
                         <div class="testimonial-two__carousel owl-carousel owl-theme">
                             <div class="testimonial-two__item">
@@ -1489,29 +1486,19 @@
                                         <i class="icon-star"></i>
                                         <i class="icon-star"></i>
                                     </div>
-                                    <p class="testimonial-two__text"> It has survived not only five centuries,
-                                        but
-                                        also the leap into electronic<br> typesetting, remaining essentially
-                                        unchanged.
-                                        It was popularised in the<br> 1960s with the release of Letraset sheets
-                                        containing Lorem Ipsum<br> passages, and more recently with desktop
-                                        publishing
-                                        software like Aldus<br> PageMaker including versions of Lorem Ipsum.</p>
+                                    <p class="testimonial-two__text"> Cette méthode a non seulement survécu pendant cinq siècles, mais a également traversé la transition vers la composition électronique. Elle est restée pratiquement inchangée et a été largement popularisée dans les années 1960 grâce aux feuilles Letraset, contenant des extraits de Lorem Ipsum. Plus récemment, elle a été intégrée dans des logiciels de publication assistée par ordinateur comme Aldus PageMaker.</p>
                                     <div class="testimonial-two__client-info">
                                         <div class="testimonial-two__client-logo">
-                                            <img src="assets/images/testimonial/testimonial-two-client-logo.png"
-                                                alt="">
+                                            <img src="assets/images/testimonial/testimonial-two-client-logo.png" alt="">
                                         </div>
                                         <div class="testimonial-two__client-name-box">
-                                            <h4 class="testimonial-two__client-name"><a
-                                                    href="testimonials.html">Mitchel Clack</a></h4>
-                                            <p class="testimonial-two__client-sub-title">Tech Specialist</p>
+                                            <h4 class="testimonial-two__client-name"><a href="testimonials.html">Mitchel Clack</a></h4>
+                                            <p class="testimonial-two__client-sub-title">Spécialiste Tech</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
+    
                             <div class="testimonial-two__item">
                                 <div class="testimonial-two__inner-content">
                                     <div class="testimonial-two__rating">
@@ -1521,29 +1508,19 @@
                                         <i class="icon-star"></i>
                                         <i class="icon-star"></i>
                                     </div>
-                                    <p class="testimonial-two__text"> It has survived not only five centuries,
-                                        but
-                                        also the leap into electronic<br> typesetting, remaining essentially
-                                        unchanged.
-                                        It was popularised in the<br> 1960s with the release of Letraset sheets
-                                        containing Lorem Ipsum<br> passages, and more recently with desktop
-                                        publishing
-                                        software like Aldus<br> PageMaker including versions of Lorem Ipsum.</p>
+                                    <p class="testimonial-two__text"> Cette méthode a non seulement survécu pendant cinq siècles, mais a également traversé la transition vers la composition électronique. Elle est restée pratiquement inchangée et a été largement popularisée dans les années 1960 grâce aux feuilles Letraset, contenant des extraits de Lorem Ipsum. Plus récemment, elle a été intégrée dans des logiciels de publication assistée par ordinateur comme Aldus PageMaker.</p>
                                     <div class="testimonial-two__client-info">
                                         <div class="testimonial-two__client-logo">
-                                            <img src="assets/images/testimonial/testimonial-two-client-logo.png"
-                                                alt="">
+                                            <img src="assets/images/testimonial/testimonial-two-client-logo.png" alt="">
                                         </div>
                                         <div class="testimonial-two__client-name-box">
-                                            <h4 class="testimonial-two__client-name"><a
-                                                    href="testimonials.html">Mitchela Smith</a></h4>
-                                            <p class="testimonial-two__client-sub-title">Tech Specialist</p>
+                                            <h4 class="testimonial-two__client-name"><a href="testimonials.html">Mitchela Smith</a></h4>
+                                            <p class="testimonial-two__client-sub-title">Spécialiste Tech</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-
+    
                             <div class="testimonial-two__item">
                                 <div class="testimonial-two__inner-content">
                                     <div class="testimonial-two__rating">
@@ -1553,31 +1530,22 @@
                                         <i class="icon-star"></i>
                                         <i class="icon-star"></i>
                                     </div>
-                                    <p class="testimonial-two__text"> It has survived not only five centuries,
-                                        but
-                                        also the leap into electronic<br> typesetting, remaining essentially
-                                        unchanged.
-                                        It was popularised in the<br> 1960s with the release of Letraset sheets
-                                        containing Lorem Ipsum<br> passages, and more recently with desktop
-                                        publishing
-                                        software like Aldus<br> PageMaker including versions of Lorem Ipsum.</p>
+                                    <p class="testimonial-two__text"> Cette méthode a non seulement survécu pendant cinq siècles, mais a également traversé la transition vers la composition électronique. Elle est restée pratiquement inchangée et a été largement popularisée dans les années 1960 grâce aux feuilles Letraset, contenant des extraits de Lorem Ipsum. Plus récemment, elle a été intégrée dans des logiciels de publication assistée par ordinateur comme Aldus PageMaker.</p>
                                     <div class="testimonial-two__client-info">
                                         <div class="testimonial-two__client-logo">
-                                            <img src="assets/images/testimonial/testimonial-two-client-logo.png"
-                                                alt="">
+                                            <img src="assets/images/testimonial/testimonial-two-client-logo.png" alt="">
                                         </div>
                                         <div class="testimonial-two__client-name-box">
-                                            <h4 class="testimonial-two__client-name"><a
-                                                    href="testimonials.html">Sarah Smith</a></h4>
-                                            <p class="testimonial-two__client-sub-title">Tech Specialist</p>
+                                            <h4 class="testimonial-two__client-name"><a href="testimonials.html">Sarah Smith</a></h4>
+                                            <p class="testimonial-two__client-sub-title">Spécialiste Tech</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+    
                         </div>
                     </div>
-
+    
                     <div class="testimonial-two__thumb-outer-box">
                         <div class="testimonial-two__thumb-carousel owl-carousel owl-theme">
                             <div class="testimonial-two__thumb-item">
@@ -1603,11 +1571,12 @@
                             </div>
                         </div>
                     </div>
-
+    
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+    
     <!--Testimonial Two End -->
         <!-- Sliding Text Three Start-->
         <section class="sliding-text-three sliding-text-four">
