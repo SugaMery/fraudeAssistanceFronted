@@ -85,15 +85,16 @@ export class SignalerFraudeComponent implements OnInit {
         const reader = new FileReader();
         reader.onload = (e: any) => {
           this.uploadedImages.push(e.target.result);
+          this.files.push(files[i]); // Add file to files array
         };
         reader.readAsDataURL(files[i]);
       }
     }
-    this.files = event.target.files;
   }
 
   deleteImage(index: number): void {
     this.uploadedImages.splice(index, 1);
+    this.files.splice(index, 1); // Update files array
     this.maxImages = this.uploadedImages.length >= 3;
   }
 
@@ -106,6 +107,7 @@ export class SignalerFraudeComponent implements OnInit {
       const reader = new FileReader();
       reader.onload = (e: any) => {
         this.uploadedImages[index] = e.target.result;
+        this.files[index] = file; // Update files array
       };
       reader.readAsDataURL(file);
     };
@@ -117,12 +119,11 @@ export class SignalerFraudeComponent implements OnInit {
     this.report.city_id = this.selectedCity ? this.selectedCity : '';
     console.log('Report data:', this.report, 'Files:', this.files);
 
-    const filesArray = Array.from(this.files);
-    this.servicesService.createReport(this.report, filesArray).subscribe(response => {
+    this.servicesService.createReport(this.report, this.files).subscribe(response => {
       console.log('Report created successfully', response);
       this.router.navigate(['/success-page']); // Navigate to a success page or handle success response
     }, error => {
       console.error('Error creating report', error);
-    });
+    }); 
   }
 }

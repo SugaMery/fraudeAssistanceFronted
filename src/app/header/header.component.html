@@ -138,14 +138,32 @@
                             </li> -->
                         </ul>
                     </div>
-                    <div class="main-menu__right">
-<!--                         <div class="main-menu__search-cart-box">
-                            <div class="main-menu__search-box">
-                                <a href="#" class="main-menu__search searcher-toggler-box fas fa-search"></a>
+                    <div class="main-menu__right" *ngIf="isUserLoggedIn()" [style.display]="!isUserLoggedIn() ? 'none' : 'block'">
+                        <div class="main-menu__btn-boxes">
+                            <div class="main-menu__btn-box-2">
+                                <a href="/signaler-fraude" class="thm-btn">Signaler une fraude</a>
                             </div>
+                            <div class="main-menu__btn-box-1">
+                                <div class="dropdown">
+                                    <a href="#login-form" id="login-dropdown-toggle"><i class="fas fa-user" style="margin-right: 0.5rem;"></i> {{ getUserFullName() }}</a>
+                                    <div class="account-dropdown" id="login-dropdown">
+                                        <ul>
+                                            <li><a href="/dashboard"><img src="assets/images/resources/dashboard.png" alt="Tableau de bord" style="width: 20px; height: 20px; margin-right: 10px;"> Tableau de bord</a></li>
+                                            <li><a href="/mes_signalements"><img src="assets/images/resources/mes_signalements.png" alt="Mes signalements" style="width: 20px; height: 20px; margin-right: 10px;"> Mes signalements</a></li>
+                                            <li><a href="/mes_notifications"><img src="assets/images/resources/mes_notifications.png" alt="Mes notifications" style="width: 20px; height: 20px; margin-right: 10px;"> Mes notifications</a></li>
+                                            <li><a href="/avis_commentaires"><img src="assets/images/resources/avis_commentaires.png" alt="Avis & Commentaires" style="width: 20px; height: 20px; margin-right: 10px;"> Avis & Commentaires</a></li>
+                                            <li><a href="/factures_abonnement"><img src="assets/images/resources/factures_abonnement.png" alt="Factures & Abonnement" style="width: 20px; height: 20px; margin-right: 10px;"> Factures & Abonnement</a></li>
+                                            <li><a href="/parametres_compte"><img src="assets/images/resources/parametres_compte.png" alt="Paramètres du compte" style="width: 20px; height: 20px; margin-right: 10px;"> Paramètres du compte</a></li>
+                                            <li><a href="/supprimer_compte"><img src="assets/images/resources/supprimer_compte.png" alt="Supprimer mon compte" style="width: 20px; height: 20px; margin-right: 10px;"> Supprimer mon compte</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                        </div> -->
-                        <div class="main-menu__btn-boxes" *ngIf="!isUserLoggedIn()">
+                    <div class="main-menu__right" *ngIf="!isUserLoggedIn()"  [style.display]="isUserLoggedIn() ? 'none' : 'block'">
+                        <div class="main-menu__btn-boxes">
                             <div class="main-menu__btn-box-1">
                                 <a href="connexion" class="thm-btn">Connexion</a>
                             </div>
@@ -153,32 +171,12 @@
                                 <a href="inscription" class="thm-btn">S'inscrire</a>
                             </div>
                         </div>
-
-                        <div class="main-menu__btn-boxes" *ngIf="isUserLoggedIn()">
-
-                            <div class="main-menu__btn-box-1">
-                                <div class="dropdown">
-                                    <a href="#login-form" id="login-dropdown-toggle"><i class="fas fa-user" style="margin-right: 0.5rem;"></i> {{ getUserFullName() }}</a>
-                                    <div class="account-dropdown" id="login-dropdown">
-                                        <ul>
-                                            <li><a href="/dashboard"><i class="fas fa-tachometer-alt" style="text-align: left; margin-right: 10px;"></i> Tableau de bord</a></li>
-                                            <li><a href="/mes_signalements"><i class="fas fa-folder" style="text-align: left; margin-right: 10px;"></i> Mes signalements</a></li>
-                                            <li><a href="/mes_notifications"><i class="fas fa-bell" style="text-align: left; margin-right: 10px;"></i> Mes notifications</a></li>
-                                            <li><a href="/avis_commentaires"><i class="fas fa-comment" style="text-align: left; margin-right: 10px;"></i> Avis & Commentaires</a></li>
-                                            <li><a href="/factures_abonnement"><i class="fas fa-credit-card" style="text-align: left; margin-right: 10px;"></i> Factures & Abonnement</a></li>
-                                            <li><a href="/parametres_compte"><i class="fas fa-cog" style="text-align: left; margin-right: 10px;"></i> Paramètres du compte</a></li>
-                                            <li><a href="/supprimer_compte"><i class="fas fa-trash-alt" style="text-align: left; margin-right: 10px;"></i> Supprimer mon compte</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-     
-                            <div class="main-menu__btn-box-2">
-                                <a href="/signaler-fraude" class="thm-btn">Signaler une fraude</a>
-                            </div>
-
-                        </div>
                     </div>
+
+
+
+
+
                 </div>
             </div>
         </div>

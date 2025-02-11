@@ -165,7 +165,8 @@
                     </div>
                     <span class="section-title-two__tagline">Catégorie</span>
                 </div>
-                <h2 class="section-title-two__title title-animation">Explorez Nos Meilleures <br>Catégories 
+                <h2 class="section-title-two__title title-animation" style="perspective:400px;">
+                    Explorez Nos Meilleures Catégories
                 </h2>
             </div>
             <div class="row">
@@ -1063,193 +1064,48 @@
                     <span>History</span>
                 </h2>
             </div>
+            
             <div class="row">
                 <!--Courses Three Single Start -->
-                <div class="col-xl-6 wow fadeInLeft" data-wow-delay="100ms">
+                <div *ngFor="let report of reports | slice:0:4" class="col-xl-6 wow fadeInLeft" data-wow-delay="100ms">
                     <div class="courses-three__single">
                         <div class="courses-three__img">
-                            <img src="assets/images/resources/courses-3-1.jpg" alt="">
+                            <img [src]="report.media[0]?.file_path" alt="">
                         </div>
                         <div class="courses-three__content">
                             <div class="courses-three__price-and-review">
-                                <h4 class="courses-three__price">$240.00</h4>
-                                <div class="courses-three__review-box">
+                                <h4 class="courses-three__price">{{ report.title | slice:0:30 }}{{ report.title.length > 30 ? '...' : '' }}</h4>
+                                <div class="courses-three__review-box" style="margin-top: 0.3rem;">
                                     <div class="courses-three__review-star">
                                         <span class="icon-star"></span>
                                     </div>
-                                    <p class="courses-three__review-text">4.5 <span>(129 Reviews)</span> </p>
+                                    <p class="courses-three__review-text">Publié par : {{ report.username }}  </p>
                                 </div>
                             </div>
-                            <h3 class="courses-three__title"><a href="course-details.html">A Beginner's Guide to
-                                    Basic <br> Skills and
-                                    Improved</a></h3>
+                            <h3 class="courses-three__title"><a href="#">{{ report.description | slice:0:100 }}{{ report.description.length > 100 ? '...' : '' }}</a></h3>
                             <div class="courses-three__btn-and-heart-box">
                                 <div class="courses-three__btn-box">
-                                    <a href="course-details.html" class="thm-btn-two">
-                                        <span>Enroll Now</span>
+                                    <a href="#" class="thm-btn-two">
+                                        <span>View Details</span>
                                         <i class="icon-angles-right"></i>
                                     </a>
                                 </div>
-                                <div class="courses-three__heart-box">
-                                    <a href="course-details.html"><span class="icon-heart"></span></a>
-                                </div>
+                       
                             </div>
                             <ul class="courses-three__meta list-unstyled">
                                 <li>
                                     <div class="icon">
-                                        <span class="icon-book"></span>
+                                        <img [src]="report.category_image_path" alt="{{ report.category_name }}" style="    width: 3rem;
+                                        height: 100%;
+                                        object-fit: cover;" class="category-image">
                                     </div>
-                                    <p>12 Lesson</p>
+                                    <p>{{ report.category_name }}</p>
                                 </li>
                                 <li>
                                     <div class="icon">
                                         <span class="icon-clock"></span>
                                     </div>
-                                    <p>620h, 20min</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--Courses Three Single End -->
-                <!--Courses Three Single Start -->
-                <div class="col-xl-6 wow fadeInRight" data-wow-delay="200ms">
-                    <div class="courses-three__single">
-                        <div class="courses-three__img">
-                            <img src="assets/images/resources/courses-3-2.jpg" alt="">
-                        </div>
-                        <div class="courses-three__content">
-                            <div class="courses-three__price-and-review">
-                                <h4 class="courses-three__price">$240.00</h4>
-                                <div class="courses-three__review-box">
-                                    <div class="courses-three__review-star">
-                                        <span class="icon-star"></span>
-                                    </div>
-                                    <p class="courses-three__review-text">4.5 <span>(129 Reviews)</span> </p>
-                                </div>
-                            </div>
-                            <h3 class="courses-three__title"><a href="course-details.html">Learn the Foundations of
-                                    <br> Visual
-                                    Communication</a></h3>
-                            <div class="courses-three__btn-and-heart-box">
-                                <div class="courses-three__btn-box">
-                                    <a href="course-details.html" class="thm-btn-two">
-                                        <span>Enroll Now</span>
-                                        <i class="icon-angles-right"></i>
-                                    </a>
-                                </div>
-                                <div class="courses-three__heart-box">
-                                    <a href="course-details.html"><span class="icon-heart"></span></a>
-                                </div>
-                            </div>
-                            <ul class="courses-three__meta list-unstyled">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-book"></span>
-                                    </div>
-                                    <p>12 Lesson</p>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-clock"></span>
-                                    </div>
-                                    <p>620h, 20min</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--Courses Three Single End -->
-                <!--Courses Three Single Start -->
-                <div class="col-xl-6 wow fadeInLeft" data-wow-delay="300ms">
-                    <div class="courses-three__single">
-                        <div class="courses-three__img">
-                            <img src="assets/images/resources/courses-3-3.jpg" alt="">
-                        </div>
-                        <div class="courses-three__content">
-                            <div class="courses-three__price-and-review">
-                                <h4 class="courses-three__price">$240.00</h4>
-                                <div class="courses-three__review-box">
-                                    <div class="courses-three__review-star">
-                                        <span class="icon-star"></span>
-                                    </div>
-                                    <p class="courses-three__review-text">4.5 <span>(129 Reviews)</span> </p>
-                                </div>
-                            </div>
-                            <h3 class="courses-three__title"><a href="course-details.html">Cooking Made Easy:
-                                    Essential <br> Skills
-                                    for Everyday Meals</a></h3>
-                            <div class="courses-three__btn-and-heart-box">
-                                <div class="courses-three__btn-box">
-                                    <a href="course-details.html" class="thm-btn-two">
-                                        <span>Enroll Now</span>
-                                        <i class="icon-angles-right"></i>
-                                    </a>
-                                </div>
-                                <div class="courses-three__heart-box">
-                                    <a href="course-details.html"><span class="icon-heart"></span></a>
-                                </div>
-                            </div>
-                            <ul class="courses-three__meta list-unstyled">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-book"></span>
-                                    </div>
-                                    <p>12 Lesson</p>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-clock"></span>
-                                    </div>
-                                    <p>620h, 20min</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <!--Courses Three Single End -->
-                <!--Courses Three Single Start -->
-                <div class="col-xl-6 wow fadeInRight" data-wow-delay="400ms">
-                    <div class="courses-three__single">
-                        <div class="courses-three__img">
-                            <img src="assets/images/resources/courses-3-4.jpg" alt="">
-                        </div>
-                        <div class="courses-three__content">
-                            <div class="courses-three__price-and-review">
-                                <h4 class="courses-three__price">$240.00</h4>
-                                <div class="courses-three__review-box">
-                                    <div class="courses-three__review-star">
-                                        <span class="icon-star"></span>
-                                    </div>
-                                    <p class="courses-three__review-text">4.5 <span>(129 Reviews)</span> </p>
-                                </div>
-                            </div>
-                            <h3 class="courses-three__title"><a href="course-details.html">How to Capture Stunning
-                                    <br> Photos with
-                                    Ease</a></h3>
-                            <div class="courses-three__btn-and-heart-box">
-                                <div class="courses-three__btn-box">
-                                    <a href="course-details.html" class="thm-btn-two">
-                                        <span>Enroll Now</span>
-                                        <i class="icon-angles-right"></i>
-                                    </a>
-                                </div>
-                                <div class="courses-three__heart-box">
-                                    <a href="course-details.html"><span class="icon-heart"></span></a>
-                                </div>
-                            </div>
-                            <ul class="courses-three__meta list-unstyled">
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-book"></span>
-                                    </div>
-                                    <p>12 Lesson</p>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <span class="icon-clock"></span>
-                                    </div>
-                                    <p>620h, 20min</p>
+                                    <p>{{ report.updated_at | date:'dd/MM/yyyy à HH:mm' }}</p>
                                 </li>
                             </ul>
                         </div>

@@ -4,16 +4,20 @@ import { FooterComponent } from "../footer/footer.component";
 import { PreloaderComponent } from "../preloader/preloader.component";
 import { ServicesService } from '../services.service';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+import { SkeletonModule } from 'primeng/skeleton';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, PreloaderComponent,CommonModule],
+  imports: [FooterComponent, HeaderComponent, SkeletonModule, PreloaderComponent , FormsModule, HttpClientModule, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
   providers: [ServicesService]
 })
 export class HomeComponent implements OnInit {
   categories: any[] = []; // Add a property to hold the categories
+  reports: any[] = []; // Add a property to hold the reports
 
   private scripts: string[] = [
     'assets/js/jquery-3.6.0.min.js',
@@ -44,6 +48,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loadScripts();
     this.fetchCategories(); // Fetch categories on init
+    this.fetchReports(); // Fetch reports on init
   }
 
   private loadScripts() {
@@ -74,5 +79,23 @@ export class HomeComponent implements OnInit {
     }, error => {
       console.error('Failed to fetch categories', error);
     });
+  }
+
+  private fetchReports() {
+    this.servicesService.getReports().subscribe(response => {
+      if (response.status === 'success') {
+        this.reports = response.data;
+        console.log('Reports:', this.reports);
+      } else {
+        console.error('Failed to fetch reports', response.message);
+      }
+    }, error => {
+      console.error('Failed to fetch reports', error);
+    });
+  }
+
+  isUserLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 }
