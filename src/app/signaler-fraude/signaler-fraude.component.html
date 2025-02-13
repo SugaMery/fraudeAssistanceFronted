@@ -152,13 +152,7 @@
                                                         <p class="w-80 h5 text-dark fw-bold">
                                                             Ajoutez des preuves (images). Maximum de 4 images.
                                                         </p>
-                                                        <div class="hr-sect">ou</div>
-                                                        <button class="btn btn-primary mb-2" (click)="fileInput.click()" style="
-                                                        background-color: #687eff;
-                                                        border-color: #687eff;
-                                                    ">
-                                                             Parcourir les fichiers
-                                                        </button>
+
                                                         <input #fileInput id="files" name="files[]" type="file" class="file-input" (change)="onFileSelected($event)" style="display: none" accept="image/*" />
                                                         <div *ngIf="fileError" class="error-message">
                                                             {{ fileError }}

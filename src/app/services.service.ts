@@ -101,6 +101,16 @@ export class ServicesService {
     return this.http.delete(`${this.apiUrl}/comments/${id}`, { headers: this.getHeaders() });
   }
 
+  // Add this method to fetch comments by report ID
+  getCommentsId(reportId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/comments?report_id=${reportId}`);
+  }
+
+
+  getCommentsByReportId(reportId: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/comments/report/${reportId}`);
+  }
+
   // Data Exports
   createDataExport(dataExport: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/data_exports`, dataExport, { headers: this.getHeaders() });
@@ -378,6 +388,10 @@ export class ServicesService {
 
   getReports(): Observable<any> {
     return this.http.get(`${this.apiUrl}/reports`);
+  }
+
+  getReportsCategory(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/reports/category/${id}`);
   }
 
   getReport(id: number): Observable<any> {

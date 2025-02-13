@@ -54,89 +54,51 @@
                             <div class="course-grid__sidebar">
                                 <div class="course-grid__search course-grid__single">
                                     <div class="course-grid__title-box">
-                                        <h3 class="course-grid__title">Search Now</h3>
+                                        <h3 class="course-grid__title">Rechercher des signalements</h3>
                                         <div class="course-grid__title-shape-1">
                                             <img src="assets/images/shapes/course-grid-title-shape-1.png" alt="">
                                         </div>
                                     </div>
-                                    <p class="course-grid__search-text">With the release of Letraset sheets containi
-                                        Lorem Ipsum passages</p>
-                                    <form action="#">
-                                        <input type="search" placeholder="Find by Categories">
-                                        <button type="submit"><i class="icon-search"></i>Search</button>
+                                    <p class="course-grid__search-text">Recherchez des signalements par catégories</p>
+                                    <form (submit)="onSearch($event)">
+                                        <input type="search" placeholder="Rechercher par catégories" [(ngModel)]="searchQuery" name="searchQuery">
+                                        <button type="submit"><i class="icon-search"></i></button>
                                     </form>
                                 </div>
-                                <div class="course-grid__price-filter course-grid__single">
+                             <div class="course-grid__price-filter course-grid__single">
                                     <div class="course-grid__title-box">
-                                        <h3 class="course-grid__title">Price Filter</h3>
+                                        <h3 class="course-grid__title">Catégories</h3>
                                         <div class="course-grid__title-shape-1">
                                             <img src="assets/images/shapes/course-grid-title-shape-1.png" alt="">
                                         </div>
                                     </div>
                                     <div class="course-grid__price-filter-free-and-paid-course">
-                                        <label class="custom-radio">
-                                            <input type="radio" name="myRadios" value="1" checked>
+                                        <label class="custom-radio" *ngFor="let category of categories">
+                                            <input type="radio" name="myRadios" [value]="category.id" (change)="onCategorySelect(category.id)" [checked]="selectedCategoryId === category.id">
                                             <span class="radio-dot"></span>
-                                            <span class="radio-text">Paid Course</span>
-                                        </label>
-                                        <label class="custom-radio">
-                                            <input type="radio" name="myRadios" value="2">
-                                            <span class="radio-dot"></span>
-                                            <span class="radio-text">Free Course</span>
+                                            <span class="radio-text">{{category.name}}</span>
                                         </label>
                                     </div>
-                                    <div class="course-grid__price-filter-ranger">
-                                        <p class="course-grid__price-filter-title">Price: $89 - $65</p>
-                                        <div class="price-ranger">
-                                            <div id="slider-range"></div>
-                                            <div class="ranger-min-max-block">
-                                                <input type="text" readonly class="min">
-                                                <span>-</span>
-                                                <input type="text" readonly class="max">
-                                                <input type="submit" value="Apply">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="course-grid__categories course-grid__single">
+
+                                </div> 
+<!--                                 <div class="course-grid__categories course-grid__single">
                                     <div class="course-grid__title-box">
-                                        <h3 class="course-grid__title">Categories</h3>
+                                        <h3 class="course-grid__title">Catégories</h3>
                                         <div class="course-grid__title-shape-1">
                                             <img src="assets/images/shapes/course-grid-title-shape-1.png" alt="">
                                         </div>
                                     </div>
-                                    <ul class="list-unstyled course-grid__list-item">
-                                        <li>
-                                            <div class="course-grid__list-check"></div>
-                                            <p class="course-grid__list-text">Accounting & Finace (12)</p>
+
+                                    <ul class="list-unstyled course-grid__list-item course-grid__price-filter-free-and-paid-course"  >
+                                        <li *ngFor="let category of categories" class="custom-radio">
+                                            <input type="radio" name="myRadios" [value]="category.id" (change)="onCategorySelect(category.id)" [checked]="selectedCategoryId === category.id">
+                                            <span class="radio-dot"></span>
+                                            <p class="course-grid__list-text">{{category.name}}</p>
                                         </li>
-                                        <li>
-                                            <div class="course-grid__list-check"></div>
-                                            <p class="course-grid__list-text">Programming & Tech (25)</p>
-                                        </li>
-                                        <li>
-                                            <div class="course-grid__list-check"></div>
-                                            <p class="course-grid__list-text">Art & Design (59)</p>
-                                        </li>
-                                        <li>
-                                            <div class="course-grid__list-check"></div>
-                                            <p class="course-grid__list-text">Health & Fitness (24)</p>
-                                        </li>
-                                        <li>
-                                            <div class="course-grid__list-check"></div>
-                                            <p class="course-grid__list-text">Sales & Marketing (40)</p>
-                                        </li>
-                                        <li>
-                                            <div class="course-grid__list-check"></div>
-                                            <p class="course-grid__list-text">User Research (40)</p>
-                                        </li>
-                                        <li>
-                                            <div class="course-grid__list-check"></div>
-                                            <p class="course-grid__list-text">Business Development (30)</p>
-                                        </li>
+
                                     </ul>
-                                </div>
-                                <div class="course-grid__skill course-grid__single">
+                                </div> -->
+<!--                                 <div class="course-grid__skill course-grid__single">
                                     <div class="course-grid__title-box">
                                         <h3 class="course-grid__title">Skills Level</h3>
                                         <div class="course-grid__title-shape-1">
@@ -184,351 +146,59 @@
                                         <p>Use Coupon</p>
                                         <h5>#FuStudy56</h5>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-8">
                         <div class="course-list__right">
                             <div class="course-list__right-top">
-                                <p class="course-list__right-top-text">Showing 12 Courses of 60</p>
-                                <div class="course-list__right-top-btn">
-                                    <a href="#"><span class="icon-border"></span></a>
-                                    <a href="#"><span class="icon-menu"></span></a>
-                                </div>
-                                <div class="course-list__showing-sort">
-                                    <p>Sort by: </p>
-                                    <div class="select-box">
-                                        <select class="wide">
-                                            <option data-display="Last Features">Last Features</option>
-                                            <option value="1">Sort by popular</option>
-                                            <option value="2">Sort by Price</option>
-                                            <option value="3">Sort by Ratings</option>
-                                        </select>
-                                    </div>
-                                </div>
+                                <p class="course-list__right-top-text">Affichage de {{ reports.length }} rapports</p>
                             </div>
                             <!--Course List Single Start-->
-                            <div class="course-list__single">
-                                <div class="course-list__img-box">
-                                    <div class="course-list__img">
-                                        <img src="assets/images/resources/course-list-img-1.jpg" alt="">
+                            <div *ngIf="reports.length === 0">
+                                <p>Aucun rapport trouvé pour cette catégorie.</p>
+                            </div>
+                            <div class="col-xl-6" *ngFor="let report of reports ">
+                                <div class="blog-two__single">
+                                    <div class="blog-two__img">
+                                        <img [src]="report.media[0]?.file_path" alt="" style="
+                                        height: 300px;
+                                        object-fit: cover;
+                                    ">                                        <div class="blog-two__date">
+                                            <span class="icon-calendar"></span>
+                                            <p>{{ report.updated_at | date:'dd/MM/yyyy' }}</p>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="course-list__content">
-                                    <div class="course-list__doller-and-heart">
-                                        <div class="course-list__doller">
-                                            <p>$540.00</p>
+                                    <div class="blog-two__content">
+                                        <div class="blog-two__meta-box">
+                                            <ul class="blog-two__meta list-unstyled">
+                                                <li>
+                                                    <a href="blog-details.html"><span class="icon-tags"></span>{{ report.category_name }}</a>
+                                                </li>
+                                                <li>
+                                                    <a href="blog-details.html"><span class="icon-clock"></span>{{ report.updated_at | date:'HH:mm' }}</a>
+                                                </li>
+
+                                            </ul>
                                         </div>
-                                        <div class="course-list__heart">
-                                            <a href="course-details.html"><span class="icon-heart"></span></a>
-                                        </div>
-                                    </div>
-                                    <h3 class="course-list__title"><a href="course-details.html">A Beginner's Guide to
-                                            Basic Skills and
-                                            Improved</a></h3>
-                                    <div class="course-list__ratting-box">
-                                        <div class="course-list__ratting">
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                        </div>
-                                        <p class="course-list__ratting-text">(5.0 / 4.2 Rating)</p>
-                                    </div>
-                                    <ul class="course-list__meta list-unstyled">
-                                        <li>
-                                            <p><span class="icon-chart-simple"></span>Advance</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-book"></span>80 Lesson</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-clock"></span>62h, 20min</p>
-                                        </li>
-                                    </ul>
-                                    <div class="course-list__btn-and-client-info">
-                                        <div class="course-list__btn-box">
-                                            <a href="course-details.html" class="thm-btn-two">
-                                                <span>Enroll Now</span>
-                                                <i class="icon-angles-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="course-list__client-box">
-                                            <div class="course-list__client-img">
-                                                <img src="assets/images/resources/course-list-client-img-1.jpg" alt="">
-                                            </div>
-                                            <div class="course-list__client-content">
-                                                <h4>Sarah Alison</h4>
-                                                <p><span class="odometer" data-count="12">00</span><i>+</i>
-                                                    Years Experian</p>
-                                            </div>
-                                        </div>
+                                        <h4 class="blog-two__title"><a href="blog-details.html">{{ report.title | slice:0:50 }}{{ report.title.length > 50 ? '...' : '' }}</a></h4>
+                                        <p class="blog-two__text">{{ report.description | slice:0:100 }}{{ report.description.length > 100 ? '...' : '' }}</p>
                                     </div>
                                 </div>
                             </div>
+
                             <!--Course List Single End-->
-                            <!--Course List Single Start-->
-                            <div class="course-list__single">
-                                <div class="course-list__img-box">
-                                    <div class="course-list__img">
-                                        <img src="assets/images/resources/course-list-img-2.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="course-list__content">
-                                    <div class="course-list__doller-and-heart">
-                                        <div class="course-list__doller">
-                                            <p>$450.00</p>
-                                        </div>
-                                        <div class="course-list__heart">
-                                            <a href="course-details.html"><span class="icon-heart"></span></a>
-                                        </div>
-                                    </div>
-                                    <h3 class="course-list__title"><a href="course-details.html">Master Python
-                                            Programming for Beginners
-                                            and Beyond</a></h3>
-                                    <div class="course-list__ratting-box">
-                                        <div class="course-list__ratting">
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                        </div>
-                                        <p class="course-list__ratting-text">(5.0 / 4.2 Rating)</p>
-                                    </div>
-                                    <ul class="course-list__meta list-unstyled">
-                                        <li>
-                                            <p><span class="icon-chart-simple"></span>Advance</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-book"></span>80 Lesson</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-clock"></span>62h, 20min</p>
-                                        </li>
-                                    </ul>
-                                    <div class="course-list__btn-and-client-info">
-                                        <div class="course-list__btn-box">
-                                            <a href="course-details.html" class="thm-btn-two">
-                                                <span>Enroll Now</span>
-                                                <i class="icon-angles-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="course-list__client-box">
-                                            <div class="course-list__client-img">
-                                                <img src="assets/images/resources/course-list-client-img-2.jpg" alt="">
-                                            </div>
-                                            <div class="course-list__client-content">
-                                                <h4>Jordan Walk</h4>
-                                                <p><span class="odometer" data-count="20">00</span><i>+</i>
-                                                    Years Experian</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Course List Single End-->
-                            <!--Course List Single Start-->
-                            <div class="course-list__single">
-                                <div class="course-list__img-box">
-                                    <div class="course-list__img">
-                                        <img src="assets/images/resources/course-list-img-3.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="course-list__content">
-                                    <div class="course-list__doller-and-heart">
-                                        <div class="course-list__doller">
-                                            <p>$120.00</p>
-                                        </div>
-                                        <div class="course-list__heart">
-                                            <a href="course-details.html"><span class="icon-heart"></span></a>
-                                        </div>
-                                    </div>
-                                    <h3 class="course-list__title"><a href="course-details.html">AI Foundations: Machine
-                                            Learning and
-                                            Neural Networks</a></h3>
-                                    <div class="course-list__ratting-box">
-                                        <div class="course-list__ratting">
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                        </div>
-                                        <p class="course-list__ratting-text">(5.0 / 4.2 Rating)</p>
-                                    </div>
-                                    <ul class="course-list__meta list-unstyled">
-                                        <li>
-                                            <p><span class="icon-chart-simple"></span>Advance</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-book"></span>80 Lesson</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-clock"></span>62h, 20min</p>
-                                        </li>
-                                    </ul>
-                                    <div class="course-list__btn-and-client-info">
-                                        <div class="course-list__btn-box">
-                                            <a href="#" class="thm-btn-two">
-                                                <span>Enroll Now</span>
-                                                <i class="icon-angles-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="course-list__client-box">
-                                            <div class="course-list__client-img">
-                                                <img src="assets/images/resources/course-list-client-img-3.jpg" alt="">
-                                            </div>
-                                            <div class="course-list__client-content">
-                                                <h4>Alex Holyoke</h4>
-                                                <p><span class="odometer" data-count="20">00</span><i>+</i>
-                                                    Years Experian</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Course List Single End-->
-                            <!--Course List Single Start-->
-                            <div class="course-list__single">
-                                <div class="course-list__img-box">
-                                    <div class="course-list__img">
-                                        <img src="assets/images/resources/course-list-img-4.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="course-list__content">
-                                    <div class="course-list__doller-and-heart">
-                                        <div class="course-list__doller">
-                                            <p>$460.00</p>
-                                        </div>
-                                        <div class="course-list__heart">
-                                            <a href="course-details.html"><span class="icon-heart"></span></a>
-                                        </div>
-                                    </div>
-                                    <h3 class="course-list__title"><a href="course-details.html">UI/UX Design Enhancing
-                                            User Experience
-                                            Effectively</a></h3>
-                                    <div class="course-list__ratting-box">
-                                        <div class="course-list__ratting">
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                        </div>
-                                        <p class="course-list__ratting-text">(5.0 / 4.2 Rating)</p>
-                                    </div>
-                                    <ul class="course-list__meta list-unstyled">
-                                        <li>
-                                            <p><span class="icon-chart-simple"></span>Advance</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-book"></span>80 Lesson</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-clock"></span>62h, 20min</p>
-                                        </li>
-                                    </ul>
-                                    <div class="course-list__btn-and-client-info">
-                                        <div class="course-list__btn-box">
-                                            <a href="course-details.html" class="thm-btn-two">
-                                                <span>Enroll Now</span>
-                                                <i class="icon-angles-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="course-list__client-box">
-                                            <div class="course-list__client-img">
-                                                <img src="assets/images/resources/course-list-client-img-4.jpg" alt="">
-                                            </div>
-                                            <div class="course-list__client-content">
-                                                <h4>Liam Stott</h4>
-                                                <p><span class="odometer" data-count="20">00</span><i>+</i>
-                                                    Years Experian</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Course List Single End-->
-                            <!--Course List Single Start-->
-                            <div class="course-list__single">
-                                <div class="course-list__img-box">
-                                    <div class="course-list__img">
-                                        <img src="assets/images/resources/course-list-img-5.jpg" alt="">
-                                    </div>
-                                </div>
-                                <div class="course-list__content">
-                                    <div class="course-list__doller-and-heart">
-                                        <div class="course-list__doller">
-                                            <p>$390.00</p>
-                                        </div>
-                                        <div class="course-list__heart">
-                                            <a href="course-details.html"><span class="icon-heart"></span></a>
-                                        </div>
-                                    </div>
-                                    <h3 class="course-list__title"><a href="course-details.html">SEO Mastery Optimize
-                                            Your Website for
-                                            Success in future</a></h3>
-                                    <div class="course-list__ratting-box">
-                                        <div class="course-list__ratting">
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                            <span class="star-2 icon-star"></span>
-                                        </div>
-                                        <p class="course-list__ratting-text">(5.0 / 4.2 Rating)</p>
-                                    </div>
-                                    <ul class="course-list__meta list-unstyled">
-                                        <li>
-                                            <p><span class="icon-chart-simple"></span>Advance</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-book"></span>80 Lesson</p>
-                                        </li>
-                                        <li>
-                                            <p><span class="icon-clock"></span>62h, 20min</p>
-                                        </li>
-                                    </ul>
-                                    <div class="course-list__btn-and-client-info">
-                                        <div class="course-list__btn-box">
-                                            <a href="course-details.html" class="thm-btn-two">
-                                                <span>Enroll Now</span>
-                                                <i class="icon-angles-right"></i>
-                                            </a>
-                                        </div>
-                                        <div class="course-list__client-box">
-                                            <div class="course-list__client-img">
-                                                <img src="assets/images/resources/course-list-client-img-5.jpg" alt="">
-                                            </div>
-                                            <div class="course-list__client-content">
-                                                <h4>Mitchel March</h4>
-                                                <p><span class="odometer" data-count="20">00</span><i>+</i>
-                                                    Years Experian</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Course List Single End-->
-                            <div class="blog-list__btn-box-2">
-                                <a href="course-details.html" class="thm-btn-two">
-                                    <span>More Course</span>
-                                    <i class="icon-angles-right"></i>
-                                </a>
-                            </div>
-                            <div class="blog-list__pagination">
+                            <div *ngIf="reports.length > 0" class="blog-list__pagination">
                                 <ul class="pg-pagination list-unstyled">
                                     <li class="prev">
-                                        <a href="#" aria-label="prev"><i class="fas fa-arrow-left"></i></a>
+                                        <a href="#" (click)="changePage(currentPage - 1)" aria-label="Précédent"><i class="fas fa-arrow-left"></i></a>
                                     </li>
-                                    <li class="count active"><a href="#">01</a></li>
-                                    <li class="count"><a href="#">02</a></li>
-                                    <li class="count"><a href="#">03</a></li>
+                                    <li class="count" *ngFor="let page of totalPagesArray" [class.active]="page === currentPage">
+                                        <a href="#" (click)="changePage(page)">{{ page }}</a>
+                                    </li>
                                     <li class="next">
-                                        <a href="#" aria-label="Next"><i class="fas fa-arrow-right"></i></a>
+                                        <a href="#" (click)="changePage(currentPage + 1)" aria-label="Suivant"><i class="fas fa-arrow-right"></i></a>
                                     </li>
                                 </ul>
                             </div>
@@ -539,10 +209,8 @@
         </section>
         <!--Course List End-->
 
-
-
         <!--Newsletter Two Start -->
-        <section class="newsletter-two">
+        <section class="newsletter-two" style="background: linear-gradient(180deg, #FFFFFF 0%, #F6F8FF 18%, #F6F8FF 100%);">
             <div class="container">
                 <div class="newsletter-two__inner">
                     <div class="newsletter-two__img">

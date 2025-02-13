@@ -55,10 +55,10 @@ export class FraudeDetailComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.id = params['id'];
       this.titre = params['titre'];
+      this.fetchReportById(this.id); 
+      this.fetchComments(this.id); // Fetch comments for the specific report
     });
-    this.fetchReportById(this.id); 
     this.fetchReports(); // Fetch reports on init
-    this.fetchComments(); // Fetch comments on init
   }
 
   private loadScripts() {
@@ -122,9 +122,9 @@ export class FraudeDetailComponent implements OnInit {
     });
   }
 
-  // Add this method to fetch comments
-  fetchComments() {
-    this.servicesService.getComments().subscribe(response => {
+  // Update this method to fetch comments for the specific report
+  fetchComments(reportId: string) {
+    this.servicesService.getCommentsByReportId(reportId).subscribe(response => {
       if (response.status === 'success') {
         this.comments = response.data;
         console.log('Comments:', this.comments);
@@ -138,10 +138,11 @@ export class FraudeDetailComponent implements OnInit {
 
   // Add this method to add a new comment with review
   addComment(comment: any) {
+    console.log('Commenteeeeeee:', comment);
     comment.report_id = this.report.id;
-    comment.nom = comment.username || 'Anonymous';
+    comment.nom = comment.nom || 'Anonymous';
     comment.email = comment.email || 'Anonymous';
-    comment.content = comment.text || 'No comment';
+    comment.content = comment.content || 'No comment';
     const commentUser ={
       "nom" : comment.nom,
       "email" : comment.email,

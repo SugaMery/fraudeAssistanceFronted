@@ -1,0 +1,68 @@
+::ng-deep .course-list__right-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--fistudy-bdr-color);
+  border-radius: 16px;
+  background-color: var(--fistudy-white);
+  padding: 0 20px;
+  margin-bottom: 30px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+::ng-deep .list-unstyled.course-grid__list-item li + li {
+  margin-top: 20px !important;
+}
+
+::ng-deep .course-grid__list-check {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+  border: none !important;
+}
+
+::ng-deep .course-grid__list-check input[type="checkbox"] {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 18px;
+  width: 18px;
+  background-color: white;
+  border: 2px solid purple;
+  border-radius: 6px;
+  transition: all 0.15s ease-in-out;
+}
+
+::ng-deep .course-grid__list-check input[type="checkbox"]:checked {
+  background-color: purple;
+  border-color: purple;
+}
+
+
+::ng-deep .course-grid__price-filter-free-and-paid-course {
+    position: relative;
+    display: flex
+;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: var(--fistudy-white);
+    border: 1px solid var(--fistudy-bdr-color);
+    padding: 19px 17px 19px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+}
+
+::ng-deep .course-list {
+     margin-bottom: 0px !important; 
+    padding-bottom: 100px;
+}

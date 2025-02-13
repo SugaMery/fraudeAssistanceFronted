@@ -57,7 +57,6 @@ export class HeaderComponent implements OnInit, AfterViewInit {
     this.servicesService.getCategories().subscribe(response => {
       if (response.status === 'success') {
         this.categories = response.data;
-        console.log('fetch categories', this.categories);
       } else {
         console.error('Failed to fetch categories', response.message);
       }

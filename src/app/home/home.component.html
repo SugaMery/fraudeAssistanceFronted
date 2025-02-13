@@ -1070,13 +1070,15 @@
                 <!--Courses Three Single Start -->
                 <div *ngFor="let report of reports | slice:0:4" class="col-xl-6 wow fadeInLeft" data-wow-delay="100ms">
                     <div class="courses-three__single">
-                        <div class="courses-three__img">
-                            <img [src]="report.media[0]?.file_path" alt="">
+                        <div class="courses-three__img" style="width: 162.86px !important; height: 217.02px !important ; object-fit: cover !important;">
+                            <img style="width: 162.86px !important; height: 217.02px !important ; object-fit: cover !important;" [src]="report.media[0]?.file_path" alt="">
                         </div>
                         <div class="courses-three__content">
-                            <div class="courses-three__price-and-review">
-                                <h4 class="courses-three__price">{{ report.title | slice:0:30 }}{{ report.title.length > 30 ? '...' : '' }}</h4>
-                                <div class="courses-three__review-box" style="margin-top: 0.3rem;">
+                            <div class="courses-three__price-and-review" style="display: block !important;">
+                                    <h4 class="courses-three__price">{{ report.title | slice:0:30 }}{{ report.title.length > 30 ? '...' : '' }}</h4>
+
+        
+                                <div class="courses-three__review-box" style="margin-top: 0.5rem;">
                                     <div class="courses-three__review-star">
                                         <span class="icon-star"></span>
                                     </div>
@@ -1095,7 +1097,7 @@
                             <ul class="courses-three__meta list-unstyled">
                                 <li>
                                     <div class="icon">
-                                        <img [src]="report.category_image_path" alt="{{ report.category_name }}" style="width: 3rem; height: 100%; object-fit: cover;" class="category-image">
+                                        <img [src]="report.category_image_path" alt="{{ report.category_name }}" style="width: 2rem; height: 100%; object-fit: cover;" class="category-image">
                                     </div>
                                     <p>{{ report.category_name }}</p>
                                 </li>
