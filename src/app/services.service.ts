@@ -406,6 +406,14 @@ export class ServicesService {
     return this.http.delete(`${this.apiUrl}/reports/${id}`, { headers: this.getHeaders() });
   }
 
+  searchReports(searchWord: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/reports/search/${searchWord}`);
+  }
+
+  searchReportsByCategory(categoryId: number, searchWord: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/reports/search/${categoryId}/${searchWord}`);
+  }
+
   // Roles
   createRole(role: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/roles`, role, { headers: this.getHeaders() });

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ServicesService } from '../services.service';
 import { HeaderComponent } from "../header/header.component";
 import { FooterComponent } from "../footer/footer.component";
@@ -24,11 +25,24 @@ export class GridFraudeReportsComponent implements OnInit {
   reportsPerPage: number = 10;
   searchQuery: string = '';
 
-  constructor(private servicesService: ServicesService) {}
+  constructor(private servicesService: ServicesService, private route: ActivatedRoute) {}
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.selectedCategoryId = params['id'] || null;
+      if( this.selectedCategoryId != null) {
+        this.getReports();
+        console.log('params', params['id']);
+        console.log('selectedCategoryId', this.selectedCategoryId);
+  
+        this.onCategorySelect(params['id']);
+        console.log('paramsfffffff', params['id']);
+      }else{
+        this.getAllReports();
+      }
+    });
+    
     this.getCategories();
-    this.getReports();
   }
 
   getCategories() {
@@ -38,18 +52,31 @@ export class GridFraudeReportsComponent implements OnInit {
   }
 
   getReports() {
-    const categoryId = this.selectedCategoryId ? this.selectedCategoryId : '24';
+    const categoryId = this.selectedCategoryId;
     this.servicesService.getReportsCategory(Number(categoryId)).subscribe((data: any) => {
       this.reports = data.data;
       this.totalPages = Math.ceil(this.reports.length / this.reportsPerPage);
     });
   }
 
+  getAllReports() {
+    const categoryId = this.selectedCategoryId;
+    this.servicesService.getReports().subscribe((data: any) => {
+      this.reports = data.data;
+      this.totalPages = Math.ceil(this.reports.length / this.reportsPerPage);
+    });
+  }
+
+
   onCategorySelect(categoryId: string) {
     this.selectedCategoryId = categoryId;
     this.currentPage = 1;
-    console.log('categoryId', categoryId);
-    this.getReports();
+    console.log('categoryIdrrrrrrrrrrr', this.selectedCategoryId , categoryId == null , this.selectedCategoryId.length == 0 );
+    if(this.selectedCategoryId.length == 0) {
+      this.getAllReports();
+    }else{
+      this.getReports();
+    }
   }
 
   changePage(page: number) {
@@ -68,7 +95,46 @@ export class GridFraudeReportsComponent implements OnInit {
 
   onSearch(event: Event) {
     event.preventDefault();
-    // Implement search functionality here
-    console.log('Search query:', this.searchQuery);
+    if (this.searchQuery.trim() !== '') {
+      if (this.selectedCategoryId) {
+        this.servicesService.searchReportsByCategory(Number(this.selectedCategoryId), this.searchQuery).subscribe((data: any) => {
+          this.reports = data.data;
+          this.totalPages = Math.ceil(this.reports.length / this.reportsPerPage);
+        });
+      } else {
+        this.servicesService.searchReports(this.searchQuery).subscribe((data: any) => {
+          this.reports = data.data;
+          this.totalPages = Math.ceil(this.reports.length / this.reportsPerPage);
+        });
+      }
+    } else {
+      if (this.selectedCategoryId) {
+        this.getReports();
+      } else {
+        this.getAllReports();
+      }
+    }
+  }
+
+  onSearchS() {
+    if (this.searchQuery.trim() !== '') {
+      if (this.selectedCategoryId) {
+        this.servicesService.searchReportsByCategory(Number(this.selectedCategoryId), this.searchQuery).subscribe((data: any) => {
+          this.reports = data.data;
+          this.totalPages = Math.ceil(this.reports.length / this.reportsPerPage);
+        });
+      } else {
+        this.servicesService.searchReports(this.searchQuery).subscribe((data: any) => {
+          this.reports = data.data;
+          this.totalPages = Math.ceil(this.reports.length / this.reportsPerPage);
+        });
+      }
+    } else {
+      if (this.selectedCategoryId) {
+        this.getReports();
+      } else {
+        this.getAllReports();
+      }
+    }
   }
 }

@@ -1,0 +1,36 @@
+::ng-deep .banner-two  {
+    padding: 50px 0 100px;
+}
+
+::ng-deep .banner-two__btn-box .thm-btn-two>i {
+    background-color: var(--fistudy-base);
+    margin-left: 0.5rem;
+}
+
+::ng-deep .banner-two__course-discount-title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 17px;
+    margin-top: 1rem;
+}
+::ng-deep .banner-two__success-student-text {
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'Outfit';
+}
+
+::ng-deep .category-two {
+    position: relative;
+    display: block;
+    background-color: #FCFCFC;
+    padding: 50px 0 0px;
+    z-index: 1;
+}
+
+::ng-deep .why-choose-two__title {
+    font-size: 20px;
+    line-height: 34px;
+    font-weight: 500;
+    margin-top: 27px;
+    margin-bottom: 17px;
+}

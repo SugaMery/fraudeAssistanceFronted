@@ -121,7 +121,7 @@ export class SignalerFraudeComponent implements OnInit {
 
     this.servicesService.createReport(this.report, this.files).subscribe(response => {
       console.log('Report created successfully', response);
-      this.router.navigate(['/success-page']); // Navigate to a success page or handle success response
+      window.location.href = '/success-page'; // Redirect to a success page or handle success response
     }, error => {
       console.error('Error creating report', error);
     }); 

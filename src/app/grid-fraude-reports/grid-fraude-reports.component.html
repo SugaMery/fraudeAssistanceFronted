@@ -1,48 +1,50 @@
 <app-header></app-header>
-        <!--Page Header Start-->
-        <section class="page-header">
-            <div class="page-header__bg" style="background-image: url(assets/images/shapes/page-header-bg-shape.png);">
-            </div>
-            <div class="page-header__shape-4">
-                <img src="assets/images/shapes/page-header-shape-4.png" alt="">
-            </div>
-            <div class="page-header__shape-5">
-                <img src="assets/images/shapes/page-header-shape-5.png" alt="">
-            </div>
-            <div class="page-header__social">
-                <a href="#">Facebook</a>
-                <span>//</span>
-                <a href="#">Instagram</a>
-                <span>//</span>
-                <a href="#">LinkedIn</a>
-                <span>//</span>
-                <a href="#">Twitter</a>
-            </div>
-            <div class="container">
-                <div class="page-header__inner">
-                    <div class="page-header__img">
-                        <img src="assets/images/resources/page-header-img-1.png" alt="">
-                        <div class="page-header__shape-1">
-                            <img src="assets/images/shapes/page-header-shape-1.png" alt="">
-                        </div>
-                        <div class="page-header__shape-2">
-                            <img src="assets/images/shapes/page-header-shape-2.png" alt="">
-                        </div>
-                        <div class="page-header__shape-3">
-                            <img src="assets/images/shapes/page-header-shape-3.png" alt="">
-                        </div>
-                    </div>
-                    <h2>Course List</h2>
-                    <div class="thm-breadcrumb__box">
-                        <ul class="thm-breadcrumb list-unstyled">
-                            <li><a href="index.html">Home</a></li>
-                            <li><span>//</span></li>
-                            <li>Course List</li>
-                        </ul>
-                    </div>
+
+<section class="page-header">
+    <div class="page-header__bg" style="background-image: url(assets/images/shapes/page-header-bg-shape.png);">
+    </div>
+    <div class="page-header__shape-4">
+        <img src="assets/images/shapes/page-header-shape-4.png" alt="">
+    </div>
+    <div class="page-header__shape-5">
+        <img src="assets/images/shapes/page-header-shape-5.png" alt="">
+    </div>
+    <div class="page-header__social">
+        <a href="#">Facebook</a>
+        <span>//</span>
+        <a href="#">Instagram</a>
+        <span>//</span>
+        <a href="#">LinkedIn</a>
+        <span>//</span>
+        <a href="#">Twitter</a>
+    </div>
+    <div class="container">
+        <div class="page-header__inner">
+            <div class="page-header__img">
+                <img src="assets/images/resources/page-header-img-1.png" alt="">
+                <div class="page-header__shape-1">
+                    <img src="assets/images/shapes/page-header-shape-1.png" alt="">
+                </div>
+                <div class="page-header__shape-2">
+                    <img src="assets/images/shapes/la-securite-sur-internet.png" alt="">
+                </div>
+                <div class="page-header__shape-3">
+                    <img src="assets/images/shapes/la-cyber-securite.png" alt="">
                 </div>
             </div>
-        </section>
+            <h2>Signalements et Assistance</h2>
+            <div class="thm-breadcrumb__box">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><span>//</span></li>
+                    <li>Signalements et Assistance</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+        <!--Page Header Start-->
+
         <!--Page Header End-->
 
         <!--Course List Start-->
@@ -59,9 +61,9 @@
                                             <img src="assets/images/shapes/course-grid-title-shape-1.png" alt="">
                                         </div>
                                     </div>
-                                    <p class="course-grid__search-text">Recherchez des signalements par catégories</p>
+                                    <p class="course-grid__search-text">Recherchez des signalements </p>
                                     <form (submit)="onSearch($event)">
-                                        <input type="search" placeholder="Rechercher par catégories" [(ngModel)]="searchQuery" name="searchQuery">
+                                        <input type="search" placeholder="Rechercher des signalements" [(ngModel)]="searchQuery" name="searchQuery" (ngModelChange)="onSearchS()">
                                         <button type="submit"><i class="icon-search"></i></button>
                                     </form>
                                 </div>
@@ -73,13 +75,18 @@
                                         </div>
                                     </div>
                                     <div class="course-grid__price-filter-free-and-paid-course">
+
                                         <label class="custom-radio" *ngFor="let category of categories">
-                                            <input type="radio" name="myRadios" [value]="category.id" (change)="onCategorySelect(category.id)" [checked]="selectedCategoryId === category.id">
+                                            <input type="radio" name="myRadios" [value]="category.id" (change)="onCategorySelect(category.id)" [checked]="selectedCategoryId == category.id">
                                             <span class="radio-dot"></span>
                                             <span class="radio-text">{{category.name}}</span>
                                         </label>
+                                        <label class="custom-radio">
+                                            <input type="radio" name="myRadios" value="" (change)="onCategorySelect('')" [checked]="selectedCategoryId == null">
+                                            <span class="radio-dot"></span>
+                                            <span class="radio-text">Tous</span>
+                                        </label>
                                     </div>
-
                                 </div> 
 <!--                                 <div class="course-grid__categories course-grid__single">
                                     <div class="course-grid__title-box">
@@ -159,31 +166,38 @@
                             <div *ngIf="reports.length === 0">
                                 <p>Aucun rapport trouvé pour cette catégorie.</p>
                             </div>
-                            <div class="col-xl-6" *ngFor="let report of reports ">
-                                <div class="blog-two__single">
-                                    <div class="blog-two__img">
-                                        <img [src]="report.media[0]?.file_path" alt="" style="
-                                        height: 300px;
+                            <div class="row">
+                                <div class="col-xl-6" *ngFor="let report of reports">
+                                    <div class="blog-two__single">
+                                        <div class="blog-two__img" style="
+                                        height: 200px;
                                         object-fit: cover;
-                                    ">                                        <div class="blog-two__date">
-                                            <span class="icon-calendar"></span>
-                                            <p>{{ report.updated_at | date:'dd/MM/yyyy' }}</p>
+                                    ">
+                                            <img [src]="report.media[0]?.file_path" alt="" style="
+                                            height: 300px;
+                                            object-fit: cover;
+                                        ">                                        <div class="blog-two__date">
+                                                <span class="icon-calendar"></span>
+                                                <p>{{ report.updated_at | date:'dd/MM/yyyy' }}</p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="blog-two__content">
-                                        <div class="blog-two__meta-box">
-                                            <ul class="blog-two__meta list-unstyled">
-                                                <li>
-                                                    <a href="blog-details.html"><span class="icon-tags"></span>{{ report.category_name }}</a>
-                                                </li>
-                                                <li>
-                                                    <a href="blog-details.html"><span class="icon-clock"></span>{{ report.updated_at | date:'HH:mm' }}</a>
-                                                </li>
+                                        <div class="blog-two__content">
+                                            <div class="blog-two__meta-box">
+                                                <ul class="blog-two__meta list-unstyled">
+                                                    <li>
+                                                        <a href="blog-details.html"><span class="icon-tags"></span>{{ report.category_name }}</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="blog-details.html"><span class="icon-clock"></span>{{ report.updated_at | date:'HH:mm' }}</a>
+                                                    </li>
 
-                                            </ul>
+                                                </ul>
+                                            </div>
+                                            <h4 class="blog-two__title"><a href="blog-details.html">{{ report.title | slice:0:50 }}{{ report.title.length > 50 ? '...' : '' }}</a></h4>
+                                            <p class="blog-two__text"  style="
+                                            height: 81px;
+                                        ">{{ report.description | slice:0:100 }}{{ report.description.length > 100 ? '...' : '' }}</p>
                                         </div>
-                                        <h4 class="blog-two__title"><a href="blog-details.html">{{ report.title | slice:0:50 }}{{ report.title.length > 50 ? '...' : '' }}</a></h4>
-                                        <p class="blog-two__text">{{ report.description | slice:0:100 }}{{ report.description.length > 100 ? '...' : '' }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -209,84 +223,6 @@
         </section>
         <!--Course List End-->
 
-        <!--Newsletter Two Start -->
-        <section class="newsletter-two" style="background: linear-gradient(180deg, #FFFFFF 0%, #F6F8FF 18%, #F6F8FF 100%);">
-            <div class="container">
-                <div class="newsletter-two__inner">
-                    <div class="newsletter-two__img">
-                        <img src="assets/images/resources/newsletter-two-img-1.png" alt="">
-                    </div>
-                    <div class="newsletter-two__inner-content">
-                        <div class="newsletter-two__shape-bg"
-                            style="background-image: url(assets/images/shapes/newsletter-two-shape-bg.png);"></div>
-                        <div class="newsletter-two__like">
-                            <img src="assets/images/shapes/newsletter-two-like.png" alt="">
-                        </div>
-                        <div class="newsletter-two__title-box">
-                            <h3 class="newsletter-two__title">Subscribe our <span>Newsletter</span></h3>
-                            <p class="newsletter-two__text">Explore a diverse selection of courses all in one platform,
-                                <br>
-                                designed to cater to various learning</p>
-                        </div>
-                        <div class="newsletter-two__form-box">
-                            <form class="newsletter-two__form">
-                                <div class="newsletter-two__input">
-                                    <input type="email" placeholder="Enter Your Email">
-                                </div>
-                                <button type="submit" class="newsletter-two__btn"> <span
-                                        class="icon-arrow-circle"></span>
-                                    Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Newsletter Two End -->
-
-        <!--Contact Info One Start -->
-        <section class="contact-info-one">
-            <div class="container">
-                <ul class="list-unstyled contact-info-one__list">
-                    <li>
-                        <div class="contact-info-one__single">
-                            <div class="contact-info-one__icon">
-                                <span class="icon-envelope"></span>
-                            </div>
-                            <div class="contact-info-one__content">
-                                <p class="contact-info-one__sub-title">Email Address:</p>
-                                <h5 class="contact-info-one__email"><a
-                                        href="mailto:info@example.com">infoexample.com</a></h5>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="contact-info-one__single">
-                            <div class="contact-info-one__icon">
-                                <span class="icon-phone"></span>
-                            </div>
-                            <div class="contact-info-one__content">
-                                <p class="contact-info-one__sub-title">Phone Number</p>
-                                <h5 class="contact-info-one__email"><a href="tel:001239957689">+00 123 (99) 57689</a>
-                                </h5>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="contact-info-one__single">
-                            <div class="contact-info-one__icon">
-                                <span class="icon-location"></span>
-                            </div>
-                            <div class="contact-info-one__content">
-                                <p class="contact-info-one__sub-title">Our Address</p>
-                                <h5 class="contact-info-one__email">1234 Elm Street Springfield,</h5>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!--Contact Info One End -->
 
 <app-footer></app-footer>
 <app-preloader></app-preloader>

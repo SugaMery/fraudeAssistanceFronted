@@ -6,6 +6,8 @@ import { SignalerFraudeComponent } from './signaler-fraude/signaler-fraude.compo
 import { SuccessPageComponent } from './success-page/success-page.component';
 import { FraudeDetailComponent } from './fraude-detail/fraude-detail.component';
 import { GridFraudeReportsComponent } from './grid-fraude-reports/grid-fraude-reports.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
+import { ContactComponent } from './contact/contact.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -14,6 +16,8 @@ export const routes: Routes = [
     { path: 'signaler-fraude', component: SignalerFraudeComponent },
     { path: 'success-page', component: SuccessPageComponent },
     { path: 'signalement', component: FraudeDetailComponent },
-    { path: 'grid', component: GridFraudeReportsComponent },
+    { path: 'les-signalements', component: GridFraudeReportsComponent },
+    { path: 'a-propos', component: AboutusComponent },
+    { path: 'contact', component: ContactComponent },
 
 ];

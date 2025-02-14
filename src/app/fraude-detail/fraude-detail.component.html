@@ -80,7 +80,7 @@
   
                                         <li>
                                             <div class="icon">
-                                                <img [src]="report.category_image_path" alt="{{ report.category_name }}" style="width: 3rem; height: 100%; object-fit: cover;" class="category-image">
+                                                <img [src]="report.category_image_path" alt="{{ report.category_name }}" style="width: 2rem; height: 100%; object-fit: cover;" class="category-image">
                                             </div>
                                             <p>{{ report.category_name }}</p>
                                         </li>
@@ -88,7 +88,9 @@
                                     </ul>
                                 </div>
                                 <p class="blog-details__text-1">{{ report.description }}.</p>
-                                <div class="blog-details__img-box-2">
+                                <div class="blog-details__img-box-2 mt-10" style="
+                                margin-top: 2rem;
+                            ">
                                     <div class="row">
                                         <div class="col-xl-6 col-lg-6" *ngIf="report.media[0]?.file_path">
                                             <div class="blog-details__img-box-img">
@@ -226,8 +228,8 @@
                                 </div>
                                 <ul class="sidebar__category-list list-unstyled">
                                     <li *ngFor="let category of categories" [class.active]="category.id === report.category_id">
-                                        <a href="blog-details.html">
-                                            <img [src]="category.file_path" alt="{{ category.name }}" style="    width: 3rem;
+                                        <a href="/les-signalements?id={{ category.id }}">
+                                            <img [src]="category.file_path" alt="{{ category.name }}" style="    width: 2rem;
                                             height: 100%;
                                             object-fit: cover;" class="category-image">
                                             {{ category.name }} 
@@ -283,40 +285,7 @@
         <!--Blog Details End-->
 
 
-        <!--Newsletter Two Start -->
-        <section class="newsletter-two">
-            <div class="container">
-                <div class="newsletter-two__inner">
-                    <div class="newsletter-two__img">
-                        <img src="assets/images/resources/newsletter-two-img-1.png" alt="">
-                    </div>
-                    <div class="newsletter-two__inner-content">
-                        <div class="newsletter-two__shape-bg"
-                            style="background-image: url(assets/images/shapes/newsletter-two-shape-bg.png);"></div>
-                        <div class="newsletter-two__like">
-                            <img src="assets/images/shapes/newsletter-two-like.png" alt="">
-                        </div>
-                        <div class="newsletter-two__title-box">
-                            <h3 class="newsletter-two__title">Subscribe our <span>Newsletter</span></h3>
-                            <p class="newsletter-two__text">Explore a diverse selection of courses all in one platform,
-                                <br>
-                                designed to cater to various learning</p>
-                        </div>
-                        <div class="newsletter-two__form-box">
-                            <form class="newsletter-two__form">
-                                <div class="newsletter-two__input">
-                                    <input type="email" placeholder="Enter Your Email">
-                                </div>
-                                <button type="submit" class="newsletter-two__btn"> <span
-                                        class="icon-arrow-circle"></span>
-                                    Subscribe</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--Newsletter Two End -->
+
 
         
 <app-footer></app-footer>
